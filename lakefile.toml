@@ -1,0 +1,13 @@
+name = "Erdos320"
+defaultTargets = ["Erdos320"]
+# Statement-hygiene hardening (audit recommendation): forbid silently
+# auto-bound identifiers in statements; an undefined name must be an error.
+leanOptions = {autoImplicit = false, relaxedAutoImplicit = false}
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "v4.32.0"
+
+[[lean_lib]]
+name = "Erdos320"
