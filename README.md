@@ -1,15 +1,12 @@
 # Erdos320
 
-A **Lean 4 + Mathlib** effort to **machine-check a manuscript on Erdős Problem
-#320** — *the asymptotic number of distinct reciprocal subset sums*. The deliverable is checked Lean
-— the manuscript's **Theorem 1.1 is fully machine-checked**
-(`Erdos320/Main.lean`, `#print axioms`-auditable against exactly four axioms, documented in `Erdos320/Assumptions.lean`, capturing the proof's external inputs — results re-used from the literature together with finite computational certificates).
+A **Lean 4 + Mathlib** effort to **machine-check a manuscript on Erdős Problem #320** — *the asymptotic number of distinct reciprocal subset sums*. The deliverable is checked Lean — the manuscript's **Theorem 1.1 is fully machine-checked** (`Erdos320/Main.lean`, with `#print axioms` auditable against exactly four axioms, documented in `Erdos320/Assumptions.lean`, capturing the proof's external inputs — results re-used from the literature together with finite computational certificates).
 
-**Use of AI:** The computational certificates in `ComputationalCertificates` were produced by GPT 5.6 Sol. The Lean proof in `Erdos320` was produced by Fable 5, based on a paper draft produced by GPT 5.6 Sol. We have carefully verified/curated the computational certificates, as well as the trusted core of the Lean proof (`Erdos320/Main.lean`, `Erdos320/Assumptions.lean` — no `sorry`, `axiom`, etc., elsewhere in the code base).
+**Use of AI:** The computational certificates in `ComputationalCertificates` were produced by GPT 5.6 Sol. The Lean proof in `Erdos320` was produced by Fable 5, based on a paper draft produced with the assistance of GPT 5.6 Sol. We have carefully verified/curated the computational certificates, as well as the trusted core of the Lean proof (`Erdos320/Main.lean`, `Erdos320/Assumptions.lean` — no `sorry`, `axiom`, etc., elsewhere in the code base).
 
 ## The problem
 
-For a positive integer `N`,
+For a positive integer `N`, let
 
 ```text
 𝓔_N = { ∑_{n ∈ A} 1/n : A ⊆ {1, …, N} },   S(N) = |𝓔_N|.
@@ -20,13 +17,13 @@ at most `N` (the empty subset contributes `0`, so `S(0) = 1`). There are `2^N`
 formal subset sums, but many collide — already `1/2 = 1/3 + 1/6` — so `S(N)`
 measures the arithmetic redundancy among bounded-denominator Egyptian
 fractions. This is the *image-size* question recorded as
-[Erdős Problem #320](https://www.erdosproblems.com/320) (it is **distinct** from
+[Erdős Problem #320](https://www.erdosproblems.com/320) (it is distinct from
 the fixed-target problem "how many subsets sum to a prescribed `x`").
 
 ## What the manuscript claims
 
-A full asymptotic for `log S(N)` with a **nonconstant** iterated-logarithmic
-phase. With `log_j` the `j`-fold iterated logarithm,
+**A full asymptotic for `log S(N)` with a nonconstant iterated-logarithmic
+phase.** With `log_j` the `j`-fold iterated logarithm,
 `h(N) = max{ j ≥ 3 : log_k N ≥ 1 for every 3 ≤ k ≤ j }` (the first-crossing
 stopping depth), and terminal phase `u_N = log_{h(N)} N ∈ [1, e)`,
 
@@ -62,8 +59,7 @@ README that connects its files to the statements in the manuscript:
    formalization's finite-input axioms.
    See **[`ComputationalCertificates/README.md`](ComputationalCertificates/README.md)**.
 
-Thus, `Erdos320/`
-proves everything downstream of a small, explicit set of axioms, and
+Thus, `Erdos320/` proves everything downstream of a small, explicit set of axioms, and
 `ComputationalCertificates/` holds any finite computations those axioms stand on.
 
 ## Build
@@ -77,8 +73,7 @@ lake build                         # build the whole project
 lake env lean Erdos320/Main.lean   # type-check the trusted core, re-emitting its warnings
 ```
 
-To verify that there are no proof
-holes outside the sanctioned assumptions file:
+To verify that there are no proof holes outside the sanctioned assumptions file:
 
 ```bash
 rg -n -w 'sorry|admit|unsafe' Erdos320 | rg -vF '`'             # must be empty (drops doc-comment mentions)
