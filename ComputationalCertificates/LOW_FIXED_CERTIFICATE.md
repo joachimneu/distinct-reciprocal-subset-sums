@@ -8,12 +8,12 @@
 2.78724720 < F(65659969) < 2.79179560,    F(N) = (log(N)/N) log(S(N)),
 ```
 
-at `N = 65659969 = floor(e^18)`. The run's certified output is the outward-
-rounded `CERT F_interval` line, `2.7872472015 < F < 2.7917955118`, of which
-the assumed interval is a strict weakening; the concluding `CERT PASS` line
-additionally places `F` in the roomier window `2.78 < F < 2.80` over which the
-companion Lean low-certificate lemmas (`../Erdos320/Lemmas/CertLow*.lean`) are
-uniform in `f`. The mathematics is the manuscript's: the
+at `N = 65659969 = floor(e^18)`. The run's certified output is the 
+outward-rounded `CERT F_interval` line, `2.7872472015 < F < 2.7917955118`, 
+of which the assumed interval is a strict weakening; the concluding `CERT PASS` 
+line additionally places `F` in the roomier window `2.78 < F < 2.80` over which 
+the companion Lean low-certificate lemmas (`../Erdos320/Lemmas/CertLow*.lean`) 
+are uniform in `f`. The mathematics is the manuscript's: the
 large-prime projection bracket that reduces `S(N)` to a product of exact
 modular image sizes, and the substitution that turns the certified enclosures
 below into the bounds on `F(N)`, are given in the proof of `comp:low` and in
