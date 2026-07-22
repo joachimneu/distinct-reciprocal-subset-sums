@@ -1,7 +1,7 @@
 # Exact fixed-point certificate for the low finite input
 
 `pilot_mod_images.cpp` certifies the low finite input of the manuscript
-(Computational Lemma `comp:low`, eq. `low-F`), which is also the Lean axiom
+(Lemma `comp:low`, eq. `low-F`), which is also the Lean axiom
 `lowFiniteInput` in `../Erdos320/Assumptions.lean`: the two-sided enclosure
 
 ```text

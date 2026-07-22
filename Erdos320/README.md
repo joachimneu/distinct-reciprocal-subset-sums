@@ -47,8 +47,8 @@ realized in the code.
 | **8.2** | Corollary (`cor:explicit-high-averaging`) | The same averaging-error bound on the high window | `ExplicitHighAveraging.lean` |
 | **8.3** | Corollary (`cor:explicit-high-rho`) | Pointwise smallness of the recurrence error `ρ` at high depth | `ExplicitHighAveraging.lean` |
 | **8.4** | Proposition (`prop:constant-phase-backward`) | Backward propagation for a constant phase to a forced value at depth 4 | `ConstantPhaseBackward.lean` |
-| **8.5** | Comp. lemma (`comp:low`) | Low finite input: certified `F` + slope/curvature data at `N₀ = ⌊e¹⁸⌋` (the `C < 1.16` side) | axiom `Assumptions.lean` `lowFiniteInput`; sub-certs `CertLow*.lean`; transfer `CertificateTransfer.lean` |
-| **8.6** | Comp. lemma (`comp:high`) | High finite input: certified `F` + data at `N₁ = ⌊e⁶⁵⌋` (the `C > 1.17` side) | proved theorem `HighFiniteAssembly.lean` (+ `HighShellGrid*.lean`, `HighAggregate.lean`); sub-certs `CertHigh*.lean` |
+| **8.5** | Lemma (`comp:low`) | Low finite input: certified `F` + slope/curvature data at `N₀ = ⌊e¹⁸⌋` (the `C < 1.16` side) | axiom `Assumptions.lean` `lowFiniteInput`; sub-certs `CertLow*.lean`; transfer `CertificateTransfer.lean` |
+| **8.6** | Lemma (`comp:high`) | High finite input: certified `F` + data at `N₁ = ⌊e⁶⁵⌋` (the `C > 1.17` side) | proved theorem `HighFiniteAssembly.lean` (+ `HighShellGrid*.lean`, `HighAggregate.lean`); sub-certs `CertHigh*.lean` |
 | **8.7** | Proposition (`prop:nonconstant`) | Nonconstancy: the incompatible `C < 1.16` vs `C > 1.17` force `Φ` to be nonconstant | `Nonconstancy.lean` |
 
 ### Key defined objects

@@ -15,10 +15,10 @@ The other two rest on artifacts in this directory.
 
 | File | Backs (axiom / paper item) | Role |
 |---|---|---|
-| `pilot_mod_images.cpp` | `lowFiniteInput` — the **low finite input** (`comp:low`, Comp. lemma 8.5): the certified `F(⌊e¹⁸⌋)` enclosure, i.e. the `C < 1.16` side of nonconstancy | C++17 program whose low-window enumeration (≈10¹³ operations, a few minutes) certifies the `F(⌊e¹⁸⌋)` enclosure the axiom assumes. Deterministic; self-test included. |
+| `pilot_mod_images.cpp` | `lowFiniteInput` — the **low finite input** (`comp:low`, Lemma 8.5): the certified `F(⌊e¹⁸⌋)` enclosure, i.e. the `C < 1.16` side of nonconstancy | C++17 program whose low-window enumeration (≈10¹³ operations, a few minutes) certifies the `F(⌊e¹⁸⌋)` enclosure the axiom assumes. Deterministic; self-test included. |
 | `low_fixed_certificate.out` | `lowFiniteInput` (`comp:low`, 8.5) | The archived deterministic transcript of that run (a curated extract; see `LOW_FIXED_CERTIFICATE.md`). The axiom's interval is a strict weakening of the transcript's `CERT F_interval` line. |
 | `LOW_FIXED_CERTIFICATE.md` | `lowFiniteInput` (`comp:low`, 8.5) | The certificate's documentation: what is computed, and how to rebuild, re-run, and compare. |
-| `S_table_0_83.txt` | `bgmsSTable` — the published BGMS `S(0..83)` table, consumed by the **high finite input** (`comp:high`, Comp. lemma 8.6) via the proved theorem `highFiniteInput` | The published BGMS table of `S(0..83)` (Bettin–Grenié–Molteni–Sanna, arXiv:2509.10030, Table 2). The Lean literal `bgmsTable` in `../Erdos320/Assumptions.lean` matches it value-by-value. |
+| `S_table_0_83.txt` | `bgmsSTable` — the published BGMS `S(0..83)` table, consumed by the **high finite input** (`comp:high`, Lemma 8.6) via the proved theorem `highFiniteInput` | The published BGMS table of `S(0..83)` (Bettin–Grenié–Molteni–Sanna, arXiv:2509.10030, Table 2). The Lean literal `bgmsTable` in `../Erdos320/Assumptions.lean` matches it value-by-value. |
 
 Everything else the paper's argument relies on computationally (the
 directed-interval certificate evaluations and the high finite input) is a
