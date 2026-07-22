@@ -410,8 +410,9 @@ theorem evalComb_JComb (R : ℕ) (u : ℝ) : evalComb (JComb R) u = J R u := by
   rw [evalComb_add, evalComb_DComb, evalComb_DComb]
   rfl
 
-/-- `AComb s`: the cumulative normalization `A_s = 1 + ∑_{j=3}^s D_j` as a
-formal combination (eq. `D-identity`). -/
+/-- `AComb s`: the cumulative comparison function `A_s = 1 + ∑_{j=3}^s D_j` as
+a formal combination (defined in `lem:backward-reference-convergence`; it is
+the `A_r` of eq. `D-identity`'s `𝓛_r D_{r+1} = A_r`). -/
 noncomputable def AComb (s : ℕ) : LaurentComb :=
   Finsupp.single 0 1 + ∑ j ∈ Finset.Icc 3 s, DComb j
 

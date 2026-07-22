@@ -28,7 +28,7 @@ theorem using `h` carries an explicit largeness hypothesis.
 namespace Erdos320
 
 /-- `iteratedLog j x`: the `j`-fold iterated natural logarithm `log_j x`
-(with Mathlib's `Real.log` convention `log x = 0` for `x ≤ 0`). -/
+(with Mathlib's total `Real.log` convention `log x = log |x|`, `log 0 = 0`). -/
 noncomputable def iteratedLog : ℕ → ℝ → ℝ
   | 0, x => x
   | j + 1, x => Real.log (iteratedLog j x)

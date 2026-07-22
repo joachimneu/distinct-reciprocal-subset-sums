@@ -24,7 +24,7 @@ right-derivative form `hYder` of the recurrence:
   one-step constants give `λ_{r+1} + 4s_{r+1} ≤ 42M + 13K + 56ε_rλ_r + 2s_r`
   with `ε_r = 1/E_{r-5}(1) ≤ 1/112`, hence
   `W_{r+1} ≤ (42M + 13K) + W_r/2` for `W_r = λ_r + 4s_r`, so
-  `W_r ≤ W := max (W_{r₀+1}) (2(42M + 13K))` for ever, and
+  `W_r ≤ W := max (W_{r₀+1}) (2(42M + 13K))` at every subsequent depth, and
   `C = 6M + K + 2W`.
 * **The limit `Ψ`**: `IterationData.iterationLimit` (a named `def`, via
   `Filter.limUnder`), with `IterationData.tendsto_Knorm_iterationLimit`
@@ -53,7 +53,7 @@ Paper vs. Lean:
   `min K_{r+1} ≥ (1 − κ·q_r(1))·min K_r` with the explicit
   `κ = K/y₀ + 6` (`IterationData.Knorm_min_step`,
   `IterationData.Knorm_min_step_normalized`) — the paper's factor
-  `(1 − C₂q_r(1) − C₂E_{r-2}(1)²/E_{r-1}(1))` with the super-exponential
+  (eq. `min-Kr`) `(1 − C₂q_r(1) − C₂E_{r-2}(1)²/E_{r-1}(1))` with the super-exponential
   term absorbed into `q_r(1)` via `E_sq_ratio_le_q_one`.  The base depth is
   chosen by the Archimedean property from `q_one_tendsto_zero` (the paper's
   "from any sufficiently large fixed base depth").
@@ -525,8 +525,8 @@ theorem Y_base_le (d : IterationData) {r : ℕ} (hr : d.r₀ ≤ r) {t : ℝ}
   exact (hbase r hr).trans (d.Y_mono r hr h1mem ht ht.1)
 
 /-- **One-step minimum recursion** (the lower-bound counterpart of
-`Knorm_sup_step`, paper: `min K_{r+1} ≥ (1 − C₂q_r(1) − C₂E_{r-2}(1)²/
-E_{r-1}(1))·min K_r`): given a positive floor `y₀ ≤ Y_r` on `[1, e]` and a
+`Knorm_sup_step`, paper eq. `min-Kr`: `min K_{r+1} ≥ (1 − C₂q_r(1) −
+C₂E_{r-2}(1)²/E_{r-1}(1))·min K_r`): given a positive floor `y₀ ≤ Y_r` on `[1, e]` and a
 lower bound `m ≥ 0` for `K_r`, the transport identity gives
 `K_{r+1}(u) ≥ (1 − K·q_r(1)/y₀)·((1 − 6q_r(1))·m)` — the relative forcing
 loss `c = K·q_r(1)/y₀` (via `E_sq_ratio_le_q_one`) and the missing-mass loss
@@ -662,8 +662,8 @@ theorem Knorm_min_step (d : IterationData) {r : ℕ} (hr : d.r₀ ≤ r)
 
 /-- `Knorm_min_step`, normalized to a single loss coefficient
 `κ ≥ K/Y_{r₀}(1) + 6`: `min K_{r+1} ≥ (1 − κ·q_r(1))·min K_r` (given
-`κ·q_r(1) ≤ 1`).  This is the paper's positivity recursion with an explicit
-`C₂`. -/
+`κ·q_r(1) ≤ 1`).  This is the paper's positivity recursion eq. `min-Kr` with
+an explicit `C₂`. -/
 theorem Knorm_min_step_normalized (d : IterationData) {r : ℕ}
     (hr : d.r₀ ≤ r) {m κ : ℝ} (hm0 : 0 ≤ m)
     (hκK : d.K / d.Y d.r₀ 1 + 6 ≤ κ) (hκq : κ * q r 1 ≤ 1)

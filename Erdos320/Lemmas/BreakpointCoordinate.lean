@@ -10,11 +10,10 @@ a candidate value `f`, the breakpoint coordinate is `x(f) = N·f/log N`
 (paper eq. `data-transform`); the reference functions are evaluated at
 `u(f) = log₃ x(f)`.
 
-These definitions previously lived in `Erdos320/Assumptions.lean`, but they are
-**not** part of the trust boundary — no `axiom`'s statement mentions them; they
-are consumed only by proved theorems.  They are kept here so that
-`Assumptions.lean` stays axioms-only (see the trust-boundary policy in
-`CLAUDE.md`).
+These definitions are **not** part of the trust boundary — no `axiom`'s
+statement mentions them; they are consumed only by proved theorems — so they
+live here rather than in `Erdos320/Assumptions.lean`, keeping that file
+axioms-only (see the trust-boundary policy in `CLAUDE.md`).
 -/
 
 namespace Erdos320

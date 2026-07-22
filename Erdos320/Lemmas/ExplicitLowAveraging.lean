@@ -41,8 +41,8 @@ deficit by `7.7·10⁻⁶`.
 
 **Deviations from the paper's displayed constants (all on the
 safe side).**  (a) The paper's transition-range bookkeeping (`k = T₊ − m`,
-geometric estimate `< 3·10⁻¹⁰`) is merged here into the above-`A` regime with
-the slightly worse — but amply budgeted — total `7.7·10⁻⁶` in place of the
+geometric estimate `< 3·10⁻¹⁰`) is merged here into the above-`A` regime,
+giving the single amply-budgeted total `7.7·10⁻⁶` in place of the
 paper's `1.018·10⁻⁵ + 3·10⁻¹⁰ + 10⁻¹⁰⁰⁰`-style sum; the final enclosure
 `(−1.03·10⁻⁵, 1.19·10⁻⁵)` is unchanged.  (b) All `10⁻¹⁰⁰⁰`-scale allowances
 of the paper are realized as `10⁻⁸`-scale allowances (still with dozens of
@@ -166,12 +166,13 @@ theorem low_cap_transport_free {c Xv Y : ℝ} (hY : 0 < Y) (hYX : Y ≤ Xv)
   · rw [min_eq_right h.le, div_mul_cancel₀ _ hY.ne']
     exact min_le_right c Xv
 
-/-- The `a* = min(m log 2, X)` deficit transfer of eq. `explicit-collision`:
-the collision deficit `log(1 + b(S−1)/P)` measured from `log S` dominates the
-deficit `log(1 + b e^{min c₁ c₂}/P)` measured from the capped value
-`min(log S, Y)`, provided `log S ≤ c₁` and `Y ≤ c₂`.  (Paper: "For
-`g(m) ≤ X` this is immediate.  If `g(m) > X`, then … which gives the claim
-because `e^{X−g(m)} < 1`.") -/
+/-- The `a*_m = min(m log 2, X)` deficit transfer of eq. `explicit-collision`:
+for `log S ≤ c₁` and `Y ≤ c₂`, the capped collision bound
+`min(log S, Y) − log(1 + b·e^{min c₁ c₂}/P)` is at most the exact one
+`log S − log(1 + b(S−1)/P)`, so capping `log S` at `Y` and replacing `S − 1`
+by `e^{min c₁ c₂}` only lowers the lower estimate.  (Paper: "For `g(m) ≤ X`
+this is immediate.  If `g(m) > X`, then … which gives the claim because
+`e^{X−g(m)} < 1`.") -/
 theorem low_deficit_transfer {P bR S Y c₁ c₂ : ℝ} (hP : 0 < P) (hS : 1 ≤ S)
     (hb : 0 ≤ bR) (hgc : Real.log S ≤ c₁) (hYc : Y ≤ c₂) :
     min (Real.log S) Y - Real.log (1 + bR * Real.exp (min c₁ c₂) / P)

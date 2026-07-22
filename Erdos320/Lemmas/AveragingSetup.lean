@@ -275,7 +275,7 @@ theorem Q_le_N (X : ℝ) : ⌊Real.exp X⌋₊ / (shellCutoff X + 1) ≤ ⌊Real
   Nat.div_le_self _ _
 
 /-- **Real lower bound on `Q`**: `e^X/(4X³) ≤ Q` for `X ≥ 10⁷`.  The
-constant `4` absorbs both the floor in `N = ⌊e^X⌋ ≥ e^X − 1`, the bound
+constant `4` absorbs the floor in `N = ⌊e^X⌋ ≥ e^X − 1`, the bound
 `M + 1 ≤ X³ + 1 ≤ 2X³`, and the `−1` lost to the `ℕ`-division floor
 (`Q > N/(M+1) − 1`); the absorption uses `e^X ≥ 4X³ + 2`, which
 `exp_gt_poly` gives with huge slack. -/

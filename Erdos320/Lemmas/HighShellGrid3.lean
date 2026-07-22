@@ -1,10 +1,21 @@
 import Erdos320.Lemmas.HighShellTight
 
 /-!
-# High-finite-input tight per-shell ledger, grid file 3/8
+# High finite input: tight per-shell ledger, grid file 3/8
 
-Machine-generated tight contribution lemmas `shell_tight_39`..`shell_tight_57`, cloning the proven three-shell template of `HighShellTight.lean` (`shell_contribution_ge_tight`).
-Each shell's literals (`Pm`, `sL`, `ℓ`, `pen`) are Lean-verified by the `norm_num`/`native_decide` bullet discharges; nothing is assumed.
+Tight per-shell contribution lemmas `shell_tight_39`..`shell_tight_57`, one per
+prime shell `m = 39..57` at `N₁ = ⌊e⁶⁵⌋`, feeding the high finite input
+(`comp:high`) — a proved theorem, not an axiom. Every shell here is in collision
+regime `b = 0`, so the penalty `pen` vanishes.
+
+Each invokes the reusable lower bound `shell_contribution_ge_tight`
+(`HighShellTight.lean`) to prove
+`Pₘ·(ℓ − pen) ≤ ∑_{p ∈ shellPrimes highN m} log σ(p, m)`, where `Pₘ` is the tight
+Dusart prime-count floor, `ℓ` a `log(sL)` lower bound, `pen` the `b`-collision
+penalty (`eq:high-collision-bound`), and `sL` a BGMS lower bound on `S m`. The
+literals are discharged in place by `norm_num`/`native_decide` with the
+`exp`-comparison log bound `log_ge_of` for `ℓ` (`pen = 0`, so no penalty bound is
+needed). The eight grid files together cover the 154-shell ledger.
 -/
 
 namespace Erdos320

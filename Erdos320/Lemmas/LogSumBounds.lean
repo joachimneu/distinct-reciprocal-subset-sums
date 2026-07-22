@@ -11,7 +11,8 @@ import Mathlib.NumberTheory.Harmonic.Bounds
 
 Sum-vs-integral comparisons for the concrete decreasing integrands
 `log t / t` and `log t / t²`, consumed by the paper's
-`prop:averaging-relation` and `lem:explicit-low-averaging` (matching the
+`prop:averaging-relation` and by the explicit averaging-error bounds
+`lem:explicit-low-averaging` / `cor:explicit-high-averaging` (matching the
 formula `∑_{k=2}^{A} log k / k ≤ ½ log²A + O(1)`).
 
 Contents:
@@ -131,12 +132,9 @@ theorem integral_log_div_sq {a b : ℝ} (ha : 0 < a) (hab : a ≤ b) :
 `∑_{k=2}^{A+1} log k / k ≤ ½ log²(A+1) + 1`, the `½ log²(T+1) + 1` term in the
 upper estimate of `lem:explicit-low-averaging`): the sum of `log(m+1)/(m+1)`
 over `1 ≤ m ≤ A` is at most `log²(A+1)/2 + 1`.  The terms `m = 1, 2`
-contribute `log 2/2 + log 3/3 < 1`; the rest is dominated by
-`∫_3^{A+1} log t / t dt ≤ log²(A+1)/2` by antitonicity of `log t / t` on
-`[e, ∞)`.
-
-(The first two terms are absorbed into the additive constant `1`; downstream
-uses only need an explicit `O(log²A)` with constant `1/2`.) -/
+contribute `log 2/2 + log 3/3 < 1` (the additive constant); the rest is
+dominated by `∫_3^{A+1} log t / t dt ≤ log²(A+1)/2` by antitonicity of
+`log t / t` on `[e, ∞)`. -/
 theorem sum_log_succ_div_succ_le (A : ℕ) :
     ∑ m ∈ Finset.Icc 1 A, Real.log (m + 1) / (m + 1)
       ≤ Real.log (A + 1) ^ 2 / 2 + 1 := by

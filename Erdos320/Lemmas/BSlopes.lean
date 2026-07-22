@@ -243,7 +243,7 @@ theorem B_sub_le_div_mStar {X Y : ℝ} (hX : 0 ≤ X) (hXY : X ≤ Y) :
         rw [tsum_weightTail (mStar_pos hX), mul_one_div]
 
 /-- Sharpened lower chord bound (`lem:B-slopes`, used for the *left* slope
-at a breakpoint): if every `g(m)` with paper index `m ≥ k` already exceeds
+at a breakpoint): if every `g(m)` with paper index `m ≥ k` is at least
 `Y`, then all those terms move in full and
 `(Y − X)/k ≤ 𝓑(Y) − 𝓑(X)`. -/
 theorem B_sub_ge_of_g_le {X Y : ℝ} {k : ℕ} (hk : 1 ≤ k) (hXY : X ≤ Y)

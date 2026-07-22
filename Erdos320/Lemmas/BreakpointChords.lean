@@ -10,10 +10,9 @@ import Mathlib.Analysis.SpecialFunctions.Pow.Deriv
 This file formalizes the manuscript's Lemma "Quantitative chord bounds at a
 breakpoint" (`lem:breakpoint-chords`, eqs. `chord-C-bounds` and `Apm`,
 `sec:breakpoint-chords`): at a breakpoint `x = g(N)` of the concave count
-function `𝓑`, the one-sided chord slopes of `𝓑` (pinned to `1/N` by
-`lem:B-slopes` and to `1/(N+1)` by its `eq:B-prime` right-derivative identity
-via `m_*(g(N)) = N+1`) squeeze any constant `C` for which
-`‖𝓑 − C·q‖ ≤ ε` on the window `[x(1−t), x(1+t)]`, provided the reference
+function `𝓑`, the one-sided chord slopes of `𝓑` (pinned to the left slope
+`1/N` by `lem:B-slopes` together with concavity) squeeze any constant `C` for
+which `‖𝓑 − C·q‖ ≤ ε` on the window `[x(1−t), x(1+t)]`, provided the reference
 function `q` (the paper's `q_br`) is increasing with relative curvature
 `−ξ q''(ξ)/q'(ξ)` bounded by `κ` on that window. The resulting two-sided bound is eq. `chord-C-bounds`:
 ```
@@ -118,8 +117,8 @@ theorem monotoneOn_deriv_mul_rpow_of_curvature_le {q' q'' : ℝ → ℝ} {a b κ
 breakpoint"), eq. `chord-C-bounds`. `Bf` plays the concave count function `𝓑`,
 `qf` plays the depth-4 reference function `q` of eq.
 `q-breakpoint-coordinate`, `x = g(N)` is the breakpoint, and the hypotheses
-`hchord_up`/`hchord_down` are the concavity + one-sided-slope facts
-`𝓑(x(1+t)) − 𝓑(x) ≤ tx/(N+1) ≤ tx/N` and `tx/N ≤ 𝓑(x) − 𝓑(x(1−t))`, proved
+`hchord_up`/`hchord_down` are the concavity + left-slope facts
+`𝓑(x(1+t)) − 𝓑(x) ≤ tx/N` and `tx/N ≤ 𝓑(x) − 𝓑(x(1−t))`, proved
 elsewhere from the paper's `lem:B-slopes`. The conclusion is
 `(Ĉ − η)/A₋ ≤ C ≤ (Ĉ + η)/A₊` with `Ĉ = x/(N·σ₀)`, `η = 2ε/(t·σ₀)`,
 `σ₀ = x·q'(x)`, and the chord factors `A₊ = chordAplus t κ`,

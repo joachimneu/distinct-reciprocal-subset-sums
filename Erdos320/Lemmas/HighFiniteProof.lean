@@ -6,8 +6,8 @@ import Erdos320.Defs.LogCount
 # Mechanizing the high finite input `highFiniteInput : 3.2411 < F ⌊e⁶⁵⌋`
 
 This file reproduces, from already-proved Lean lemmas and the sanctioned
-BGMS/Dusart axioms, the `high_bridge_lower` computation of the manuscript's
-directed-interval certificate, whose conclusion is
+BGMS/Dusart axioms, the finite computation of the manuscript's high finite
+input (`comp:high`), whose conclusion is
 ```
 F(N₁) = (log N₁ / N₁)·log S(N₁) > 3.2411,   N₁ = ⌊e⁶⁵⌋
      = 16948892444103337141417836114.
@@ -46,8 +46,8 @@ This is `shell_collision_lower` with the real-valued admissibility hypothesis
 `hb` replaced by the tight integer-power hypothesis `hWlt : W < r^{b+1}`.  The
 proof body is identical except for the final step of the collision-count bound,
 where `card ≤ log W/log r` (from `card_filter_dvd_le_of_abs_le`) is combined with
-`log W < (b+1)·log r` (from `hWlt`) to give the *integer* `card ≤ b` — rather
-than the coarser `card ≤ b` obtained from `log W/log r ≤ b`. -/
+`log W < (b+1)·log r` (from `hWlt`) to give `card ≤ b` with `b = b_cert` — rather
+than the inflated `b = b_cert + 1` that the coarser `log W/log r ≤ b` would force. -/
 theorem shell_collision_lower_tight {N m : ℕ}
     (P : Finset ℕ) (hP : P.Nonempty)
     (hprime : ∀ p ∈ P, Nat.Prime p) (hlarge : ∀ p ∈ P, m < p)

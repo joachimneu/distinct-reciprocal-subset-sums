@@ -52,7 +52,7 @@ axiom fioriKadiriSwidinsky_pi_approx (t : ℝ) (ht : 2 ≤ t) :
 
 /-! Source: A. Fiori, H. Kadiri, J. Swidinsky, *Sharper bounds for the error
 term in the Prime Number Theorem*, Research in Number Theory 9 (2023), no. 3,
-Paper No. 63 (arXiv:2206.12557; `\cite{FioriKadiriSwidinsky}`), Corollary 22.
+Paper No. 63 (arXiv:2206.12557; `\cite{FioriKadiriSwidinsky}`), abstract and Corollary 22.
 -/
 
 /-! ## `dusart_theta_k3` — `|ϑ(t) − t| ≤ t/(log t)³` for `t ≥ 89 967 803`

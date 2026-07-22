@@ -9,20 +9,19 @@ This file finishes the paper's Lemma "Convergence of the reference
 functions" (`lem:backward-reference-convergence`) on top of
 `Erdos320.Lemmas.BackwardReferenceConvergence`:
 
-* **The `A_s`-proximity derivative bound** (eq. `reference-derivative-bound`,
-  whose display is exactly this derivative bound):
+* **The `A_s`-proximity derivative bound** (eq. `reference-derivative-bound`):
   `abs_deriv_Qref_sub_A_le` — for `s ≥ 5`, `R ≥ s+1`,
   `u ≥ 1`, `|(Q_s^{[R]} − A_s)'| ≤ 32 A_{s-1} E_{s-3}'/E_{s-2}` (the paper's
   `E_{s-3}' = a_{s-1}`).  The exceptional increment `Δ_{5,7}` (the paper's
   "at `s = 5`, exact use of eq. `laurent-derivative`") is handled by running
   the size induction at the terminal depth `R = 7` explicitly
   (`abs_evalComb_derivIter_DeltaComb_five_seven_le`); the paper's sharp
-  table `156·E₃⁷/E₄` is not needed — the wasteful generic constants already
+  bound `156·E₃⁷/E₄` is not needed — the wasteful generic constants already
   fit the margin.
 * **Derivative bookkeeping for `B_j = A_j'/a_j`**
   (eq. `Bj-derivative-bound`): `hasDerivAt_Bref` and `abs_deriv_Bref_le`
   (`|B_j'| ≤ 4 A_{j-1} x_{j-3}'/x_{j-2}`), which
-  `Erdos320.Lemmas.BackwardReference` had left open.
+  `Erdos320.Lemmas.BackwardReference` leaves open.
 * **The limit's derivatives** — `QrefLimitIterDeriv m s` (the `m`-th
   derivative of `Q_s^*` as an explicit convergent series), with
   `hasDerivAt_QrefLimitIterDeriv` / `hasDerivAt_QrefLimit` on the *open*
@@ -57,11 +56,11 @@ Paper-vs-Lean notes:
   `(1, 2)` at positive distance from the endpoint `u = 1`); the endpoint
   values themselves are still
   controlled by the value-level bounds.
-* The paper's integer table for `∂^k(Q₄^{[7]} − Q̃₄)`, `U₄,₇`, `V₄,₇`
-  (eq. `first-reference-bound`) is replaced by the generic size induction
-  run at `R = 7`; the resulting constants are (much) larger than the
-  paper's sharp `1299·E₃¹⁰/E₄ + 2758·E₄¹⁵/E₅` but still clear the
-  `exp(−3.7·10⁶)` margin with room to spare, so the sharp table is not
+* Where the paper records an integer table for `∂^k(Q₄^{[7]} − Q̃₄)`, `U₄,₇`,
+  `V₄,₇` (eq. `first-reference-bound`), this development runs the generic
+  size induction at `R = 7` instead; the resulting constants are (much)
+  larger than the paper's sharp `1299·E₃¹⁰/E₄ + 2758·E₄¹⁵/E₅` but still clear
+  the `exp(−3.7·10⁶)` margin with room to spare, so the sharp table is not
   load-bearing for eq. `R7-tail`.
 -/
 
@@ -541,7 +540,7 @@ The general size induction of `BackwardReferenceConvergence` is packaged
 with the hypothesis `8 ≤ R` (which is all the paper's all-depth argument
 needs); the finitely many backward steps at `R = 7` are unrolled here by
 hand — three `backward_step`s from the seeds, exactly the computation the
-paper's symbolic program performs (`sec:certificates`), but with the
+paper's symbolic program performs (`sec:reproducibility`), but with the
 generic, deliberately wasteful constants. -/
 
 private theorem UCombAux_zero_seven_sizeBound :
@@ -690,7 +689,7 @@ theorem poly_div_E_succ_le_exp_neg_half {j : ℕ} (hj : 3 ≤ j) {u : ℝ}
 
 /-- **The exceptional increment `Δ₅,₇` and its derivatives** (the paper's
 "At `s = 5`, exact use of eq. `laurent-derivative` gives
-`|∂_u^k Δ_{5,7}| ≤ 156 E₃⁷/E₄`"): with the generic (wasteful) constants,
+`|∂_u Δ_{5,7}| ≤ 156 E₃⁷/E₄`"): with the generic (wasteful) constants,
 `|∂^m Δ_{5,7}| ≤ e^{-E₃(u)/2}` for `m ≤ 2`, `u ≥ 1` — which is all the
 `b₅`-margin needs. -/
 theorem abs_evalComb_derivIter_DeltaComb_five_seven_le {m : ℕ} (hm : m ≤ 2)
@@ -1359,7 +1358,8 @@ theorem abs_deriv_Qref_sub_A_le {s R : ℕ} (hs : 5 ≤ s) (hR : s + 1 ≤ R)
 /-! ## The exact `R = 7` identity (eq. `Q47-exact`) and the reference-core
 correction -/
 
-/-- Evaluation is additive under subtraction of combinations. -/
+/-- Evaluation of a difference of combinations is the difference of
+evaluations. -/
 theorem evalComb_sub (P Q : LaurentComb) (u : ℝ) :
     evalComb (P - Q) u = evalComb P u - evalComb Q u := by
   have h : P - Q = P + (-1 : ℤ) • Q := by

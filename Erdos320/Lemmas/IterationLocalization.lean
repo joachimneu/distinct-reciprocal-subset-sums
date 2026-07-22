@@ -48,7 +48,8 @@ Paper vs. Lean:
   matching `hasDerivAt_J_succ`).
 * **Range of `u`.** The paper states all four bounds "uniformly on
   `[1, e]`".  The Lean proofs of `integral_q_Jderiv_le`, `missing_mass_le`,
-  `endpoint_mass_le`, `J_transport`, `mass_le` need only `1 ≤ u` — the
+  `endpoint_mass_le`, `mass_le` need only `1 ≤ u` (and `J_transport` no
+  ordering against `1` at all) — the
   upper cutoff `u ≤ e` is genuinely used only in `forcing_le` (to compare
   `δ_r` against `q_r(u) ≥ q_r(e)`) and in `integral_J_D_le` /
   `endpoint_D_int` (through `t ≤ e` in `D_{r+1} = t·a_r`).

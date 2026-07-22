@@ -20,9 +20,9 @@ eq. `smooth-denominator-def`).  This file provides:
   and the exact partition `largePrimes (N/(M+1)) N = ⋃_{1 ≤ m ≤ M}
   shellPrimes N m` (`largePrimes_eq_biUnion_shellPrimes`,
   `shellPrimes_pairwiseDisjoint`) — the paper's "the large-prime product is
-  exactly the disjoint union of the shells indexed by `1 ≤ m ≤ M`", including
-  the remark that "since primes are integers, the conditions `p > Q` and
-  `p > N/(M+1)` are equivalent";
+  exactly the disjoint union of the shells indexed by `1 ≤ m ≤ M`" (using the
+  paper's remark that `p > Q` and `p > N/(M+1)` are equivalent for integer `p`,
+  detailed at `largePrimes_eq_biUnion_shellPrimes`);
 * the two-sided shell-sum form of `g(N)` with the explicit fibre error
   `log(H_N + 1) + log 𝔇_Q` (`g_shell_decomposition`), the Lean rendering of
   eq. `shell-sum` with the `O(·)` made explicit;

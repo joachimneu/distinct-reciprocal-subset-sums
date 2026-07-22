@@ -26,8 +26,8 @@ applicable and the resulting bound, eq. `collision-sum`:
 * **Shell primes avoid the lcm** (paper: "Every shell prime exceeds `m` and
   hence divides neither `L_m` nor `L(T_m)`"): `not_dvd_lcm_Icc_of_lt`.
 * **Chebyshev-type bound for the lcm** (paper: "the elementary Chebyshev
-  estimate" `log L_m = Σ_{p^k≤m} log p ≪ m`, which "controls the numerator
-  span"):
+  estimate" `log L_m = Σ_{p^k≤m} log p ≪ m`, which "bounds the diameter of
+  the cleared set"):
   `log_lcm_Icc_le` gives `log L_m ≤ ϑ(m) + √m·log m` —
   `lem:prime-power-splitting` specialized to `Q = N = m`
   (`L_m = 𝔇_m(m)`), realized here by specializing `log_smoothPart_le` — and
@@ -299,7 +299,7 @@ theorem shell_collision_lower {N m : ℕ}
 /-- Explicit numerator-span bound `log(L_m·H_m) ≤ (log 4)·m + √m·log m +
 log(1 + log m)`, the fully explicit form of the paper's Chebyshev estimate
 `log L_m = Σ_{p^k≤m} log p ≪ m` "which, together with `H_m ≤ 1 + log m`,
-controls the numerator span" (proof of
+bounds the diameter of the cleared set" (proof of
 eq. `collision-sum`; cf. eq. `explicit-bm` in `lem:explicit-low-averaging`).
 The harmonic bound `H_m ≤ 1 + log m` is taken as a hypothesis (it is proved
 elsewhere in the development); the lcm part is `log_lcm_Icc_le` combined with

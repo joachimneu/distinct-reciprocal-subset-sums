@@ -140,7 +140,7 @@ private theorem cert_highCurv_QpBounds {ξ : ℝ} (hlo : (8e26 : ℝ) ≤ ξ)
 set_option maxHeartbeats 1200000 in
 /-- Two-sided bound `|remainder| ≤ 10⁻⁶` for the `Q̃₄''` grouped form, over the
 high window's `E`-enclosures.  Factored out (own heartbeat budget) so the heavy
-`gcongr`/`linarith` on the ~36-monomial numerator does not blow the budget of
+`gcongr`/`linarith` on the ~26-monomial numerator does not blow the budget of
 `cert_highCurv_QppBounds`. -/
 private theorem cert_highCurv_Qpp_remBounds {e1 e2 e3 u : ℝ}
     (he1hi : e1 ≤ 4.1703) (he2hi : e2 ≤ 64.73475) (huhi : u ≤ 1.42799)

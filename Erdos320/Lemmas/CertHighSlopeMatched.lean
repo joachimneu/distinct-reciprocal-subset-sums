@@ -278,7 +278,8 @@ private theorem highMatch_Qp_ub :
   linarith [he1hi, tb_ue1_hi, tb_e1e2r_lo, tb_ue1e2r_lo, tb_recip_lo, hRpden_hi]
 
 set_option maxHeartbeats 1000000 in
-/-- **(⋆⋆) at the left endpoint:** `q̃'(8.447·10²⁶) < 1/(1.1794·N₁)`. -/
+/-- **(⋆) at the left endpoint** (proved via the cleared-denominator form
+(⋆⋆)): `q̃'(8.447·10²⁶) < 1/(1.1794·N₁)`. -/
 private theorem highMatch_endpoint_slope :
     deriv qCore 8.447e26 < 1 / (1.1794 * 16948892444103337141417836114) := by
   have hξ39 : (3.9e6 : ℝ) < 8.447e26 := by norm_num

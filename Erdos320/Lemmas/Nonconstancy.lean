@@ -15,11 +15,11 @@ certified breakpoints:
 
 * **Low input** `N₀ = 65 659 969 = ⌊e¹⁸⌋` (`comp:low`): with `t = 0.04`,
   `ε = 4.1·10⁻⁵`, `κ = 1.061`, the certified data `Ĉ < 1.11635`,
-  `σ₀ > 0.13889`, `A₊ > 0.977` give `C < 1.16` (paper eq. `low-eps` and the
-  first display of the `prop:nonconstant` proof).
+  `σ₀ > 0.13889` and the chord factor `A₊ > 0.977` give `C < 1.16` (paper
+  eq. `low-eps` and the first display of the `prop:nonconstant` proof).
 * **High input** `N₁ = ⌊e⁶⁵⌋` (`comp:high`): with `t = 10⁻³`, `ε = 10⁻¹²`,
-  `κ = 1.021`, the certified data `Ĉ > 1.1793`, `σ₁ > 0.0398`, `A₋ < 1.005`
-  give `C > 1.17`.
+  `κ = 1.021`, the certified data `Ĉ > 1.1793`, `σ₁ > 0.0398` and the chord
+  factor `A₋ < 1.005` give `C > 1.17`.
 
 The two bounds are incompatible, so no constant `C` exists.
 

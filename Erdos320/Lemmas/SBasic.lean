@@ -55,10 +55,9 @@ theorem harmonicSum_mem_reciprocalSubsetSumSet_of_le {k N : ℕ} (h : k ≤ N) :
 /-- `S N > 0` — convenience restatement of `one_le_S`. -/
 theorem S_pos (N : ℕ) : 0 < S N := one_le_S N
 
-/-- `S` is strictly increasing.  Paper §4 (after eq. `B-def`): "`g` is strictly
-increasing: `H_N ∈ 𝓔_N` but `H_N ∉ 𝓔_{N-1}`" — here in the equivalent
-successor form: `𝓔_N ⊊ 𝓔_{N+1}` because `H_{N+1} ∈ 𝓔_{N+1}` exceeds the
-maximum `H_N` of `𝓔_N`. -/
+/-- `S` is strictly increasing (paper §4, after eq. `B-def`), in the successor
+form: `𝓔_N ⊊ 𝓔_{N+1}` because `H_{N+1} ∈ 𝓔_{N+1}` exceeds the maximum `H_N`
+of `𝓔_N`. -/
 theorem S_strictMono : StrictMono S := by
   apply strictMono_nat_of_lt_succ
   intro n

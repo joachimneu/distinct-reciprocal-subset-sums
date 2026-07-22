@@ -7,8 +7,9 @@ import Erdos320.Lemmas.Doublings
 # The high-finite-input shell ledger: composing the per-shell pipeline
 
 This file assembles the reusable per-shell contribution lower bound for the high
-finite input `highFiniteInput : 3.2411 < F ⌊e⁶⁵⌋` and instantiates it end-to-end
-on three representative shells — one in each collision regime `b ∈ {0, 1, 2}`.
+finite input `highFiniteInput : 3.2411 < F ⌊e⁶⁵⌋` (`comp:high`) and instantiates
+it end-to-end on three representative shells — one in each collision regime
+`b ∈ {0, 1, 2}`.
 The full 154-shell ledger runs the tightened variant of this pipeline
 (`HighShellTight.lean`) through `HighShellGrid1..8.lean` +
 `HighFiniteAssembly.lean`.
@@ -25,8 +26,10 @@ The composition wires together four already-proved, hole-free pieces:
   regime specializes with `pen = 0`);
 * `S_ge_sLowerBGMS` (`Doublings.lean`) — the certified `S m ≥ sLowerBGMS m`
   lower bound driving `ℓ ≤ log(S m)`;
-* `hWlt_of_ratLt` (`HighFiniteProof.lean`) — the tight collision check
-  `L_m·H_m < (N₁/(m+1))^(b+1)` by `native_decide` in `ℚ`.
+* `hWlt_of_ratLt` (`HighFiniteProof.lean`) — the collision-multiplicity check
+  `V_m = L_m·H_m < (N₁/(m+1))^(b+1)` (`eq:high-collision-bound`, with `V_m` the
+  numerator span of `eq:numerator-span-recurrence`), discharged by `native_decide`
+  in `ℚ` at each shell.
 
 The single reusable lemma is `shell_contribution_ge`; the three concrete shells
 are `shell_2` (`b = 0`), `shell_61` (`b = 1`), `shell_121` (`b = 2`).
@@ -179,8 +182,8 @@ theorem shell_contribution_ge (m b : ℕ) (Pm : ℚ) (ℓ pen : ℝ) (sL : ℕ)
 
 /-! ## Three representative shells (one per collision regime)
 
-The concrete inputs reproduce the certificate's `high_bridge_lower` per-shell
-data, except that the log endpoints use the
+The concrete inputs reproduce the certificate's per-shell ledger data
+(`comp:high`), except that the log endpoints use the
 coarser `64.999/65.001 ± logNat` enclosures rather than full-precision `log`, and
 the `b = 2` penalty is bounded through `log 10` rather than the tight
 `log(1 + t)`.  Both loosenings are modest and each shell's contribution stays

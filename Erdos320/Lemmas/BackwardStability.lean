@@ -28,7 +28,7 @@ import Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic
 namespace Erdos320
 
 /-- **Backward stability estimate** (paper `lem:backward-stability`,
-eq. `backward-stability`). With `I = [α, β]` and `I_h = [α - h, β + h]`:
+`eq:backward-stability`). With `I = [α, β]` and `I_h = [α - h, β + h]`:
 if `a_s ≥ aInf > 0` on `I_h`, `H_s` is monotone on `I_h`, `Q_s` is
 `LipQ`-Lipschitz on `I_h`, `|ρ_s| ≤ ρBound` on `I_h`, `C ≥ 0`, the backward
 differentiation relations hold in integral form on `I_h`, and

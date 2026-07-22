@@ -14,8 +14,10 @@ This file instantiates the generic iteration lemma
 (`rhoDepth_abs_le`, the explicit form of eq. `rho-small`).
 
 * `HbarIterationData` — the hypothesis package `(H̄, ρ, 107, 8)` of the
-  iteration lemma, every field discharged from `lem:exact-recurrence`
-  (`ExactRecurrence`) and `lem:threshold` (`Threshold`).
+  iteration lemma, its fields discharged from the `H̄`/`𝓑` basics
+  (positivity, monotonicity, continuity, endpoint matching), the recurrence
+  of `lem:exact-recurrence` (`ExactRecurrence`), and the forcing bound of
+  `lem:threshold` (`Threshold`).
 * `phase_hYder` — the everywhere-valid right-derivative form of
   eq. `exact-recurrence` feeding the contraction argument.
 * `phasePhi` — **the phase function `Φ`** of `prop:phase`, defined as the
@@ -79,13 +81,12 @@ theorem phase_B_pos_of_one_le {X : ℝ} (hX : 1 ≤ X) : 0 < B X := by
 /-! ## The iteration package `Y_r = H̄_r`, `η_r = ρ_r` -/
 
 /-- The iteration data of `lem:iteration-endpoint-matching` realized by
-`Y_r = H̄_r`, `η_r = ρ_r` — the instantiation performed by the paper's proof
-of `prop:phase`, which applies `lem:iteration-endpoint-matching` to
-`Y_r = H̄_r`, with `lem:exact-recurrence` supplying the differentiated
-recurrence and the required uniform bound.  The forcing constant is the
-explicit `K = 107` of `rhoDepth_abs_le` (eq. `rho-small`); the starting
-depth `r₀ = 8` clears every numeric threshold of the localization
-toolkit. -/
+`Y_r = H̄_r`, `η_r = ρ_r` — the paper's proof of `prop:phase` ("apply
+`lem:iteration-endpoint-matching` to `Y_r = H̄_r`").  `lem:exact-recurrence`
+supplies the differentiated recurrence (`Y_transport`) and the uniform
+forcing bound `|ρ_r| ≤ 107·E_{r-2}²/E_{r-1}`, the explicit `K = 107` form of
+eq. `rho-small` (`rhoDepth_abs_le`).  The starting depth `r₀ = 8` clears
+every numeric threshold of the localization toolkit. -/
 noncomputable def HbarIterationData : IterationData where
   Y := Hbar
   η := rhoDepth

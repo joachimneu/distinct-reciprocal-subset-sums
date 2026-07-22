@@ -9,7 +9,7 @@ import Mathlib.Tactic.NormNum.Prime
 # The Bettin–Grenié–Molteni–Sanna doubling identities `S n = 2·S(n−1)`
 
 This file mechanizes the "doubling" step of the manuscript's high finite input
-(§8, feeding `comp:high`): for the `35` certified indices
+(§8, `comp:high`): for the `35` certified indices
 `n ∈ {86, …, 151}` the counting function *exactly* doubles,
 ```
 S(n) = 2·S(n−1),
@@ -37,7 +37,7 @@ equality would put `k⁻¹` into the difference set
 concrete `ZMod p`, `p < 160`) therefore rules the equality out — and gives
 disjointness, hence the doubling.
 
-Note `a = 1` is **not** uniform: four witnesses use a genuine prime power
+The exponent `a` is not uniformly `1`: four witnesses need `a ≥ 2`
 (`98 = 7²·2`, `121 = 11²`, `125 = 5³`, `128 = 2⁷`), so `disjoint_of_modCheck`
 is proved for general `a` via the `p`-adic valuation bookkeeping
 (`Nat.ordProj`/`Nat.ordCompl`).

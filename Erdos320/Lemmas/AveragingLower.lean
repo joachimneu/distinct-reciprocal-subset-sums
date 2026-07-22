@@ -6,8 +6,8 @@ import Erdos320.Lemmas.BSlopes
 # Lower half of the averaging relation (`prop:averaging-relation`)
 
 The manuscript's Proposition "Asymptotic averaging relation" states
-`𝓡(X) = F(e^X) − 𝓑(X) ≪ (log X)²/X`.  This file proves the **lower** half —
-the reverse of eq. `shell-upper` — in fully explicit form:
+`|𝓡(X)| ≪ (log X)²/X` for `𝓡(X) := F(e^X) − 𝓑(X)`.  This file proves the
+**lower** half — the reverse of eq. `shell-upper` — in fully explicit form:
 
 ```
 𝓑(X) − F(e^X) ≤ 4·(log X)²/X        for X ≥ 10⁷,

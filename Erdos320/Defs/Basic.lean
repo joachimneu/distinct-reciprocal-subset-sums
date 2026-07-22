@@ -45,8 +45,8 @@ sum `0`. -/
 def reciprocalSubsetSumSet (N : ℕ) : Finset ℚ :=
   (Icc 1 N).powerset.image fun (A : Finset ℕ) => ∑ n ∈ A, (1 : ℚ) / (n : ℚ)
 
-/-- `S N` is Erdős and Graham's `S(N) = |𝓔_N|`: the number of distinct
-reciprocal subset sums with denominators at most `N`. -/
+/-- `S N` is the paper's counting function `S(N) = |𝓔_N|` (`eq:EN-SN-intro`):
+the number of distinct reciprocal subset sums with denominators at most `N`. -/
 def S (N : ℕ) : ℕ := (reciprocalSubsetSumSet N).card
 
 /-- The empty subset witnesses that the sum `0` is always a reciprocal subset

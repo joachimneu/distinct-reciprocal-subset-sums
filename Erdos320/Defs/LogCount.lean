@@ -29,9 +29,8 @@ theorem g_mono : Monotone g := fun M N h => by
   exact Real.log_le_log hM (by exact_mod_cast S_mono h)
 
 /-- The paper's real-argument normalized logarithmic count
-`F(x) = (log x / x) · g(⌊x⌋)`.  The paper uses it for `x ≥ 2`; for `x < 1`
-both factors degenerate harmlessly (`Real.log` of a nonpositive number is `0`
-in Mathlib, and `⌊x⌋₊ = 0` for `x < 1`). -/
+`F(x) = (log x / x) · g(⌊x⌋)`.  The paper uses it for `x ≥ 2`; for `x < 1` it
+vanishes, since `⌊x⌋₊ = 0` forces `g(⌊x⌋₊) = g(0) = 0`. -/
 noncomputable def FReal (x : ℝ) : ℝ := (Real.log x / x) * g ⌊x⌋₊
 
 /-- On natural arguments, `FReal` is the normalized count `F` of

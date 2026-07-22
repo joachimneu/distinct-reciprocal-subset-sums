@@ -34,7 +34,7 @@ Contents, following the paper's proof of `lem:backward-reference-convergence`:
   `abs_evalComb_derivIter_UCombAux_le`, `abs_evalComb_derivIter_VCombAux_le`.
 * **The clean exponential increment bound** (eq. `reference-increment`):
   `abs_evalComb_derivIter_DeltaComb_le` —
-  `|∂_u^k (Q_s^{[R+1]} − Q_s^{[R]})| ≤ 2 exp(−E_{R−4}/2)` for `k ≤ 2`,
+  `|∂_u^m (Q_s^{[R+1]} − Q_s^{[R]})| ≤ 2 exp(−E_{R−4}/2)` for `m ≤ 2`,
   `R ≥ 8`, `4 ≤ s < R` (via `R_cubed_le_E_sub_five` and
   `poly_factor_le_exp_half`, the paper's "take logarithms" step).
 * **The limit** — `QrefLimit s = Q_s^*` as `Q_s^{[s+1]}` plus the convergent
@@ -145,8 +145,9 @@ theorem height_rangeVec_le (k : ℕ) : height (rangeVec k) ≤ k :=
     _ = k := by
         rw [Finset.sum_const, smul_eq_mul, mul_one, Finset.card_range]
 
-/-- Structure of the monomials of `AComb s`: the constant `1` or a principal
-monomial `x₀⋯x_{j−3}` with `3 ≤ j ≤ s` (eq. `D-identity`). -/
+/-- Structure of the monomials of `AComb s = A_s = 1 + ∑_{j=3}^s D_j`: the
+constant `1` or a principal monomial `x₀⋯x_{j−3}` (`= D_j`) with
+`3 ≤ j ≤ s`. -/
 theorem mem_AComb_support {s : ℕ} {ν : ExpVec} (hν : ν ∈ (AComb s).support) :
     ν = 0 ∨ ∃ j ∈ Finset.Icc 3 s, ν = rangeVec (j - 2) := by
   unfold AComb at hν
@@ -1129,8 +1130,9 @@ theorem abs_tsum_DeltaComb_tail_le {s n : ℕ} (hs : 4 ≤ s)
         ring
 
 /-- **Quantitative tail** for the limit: for `s ≥ 4`, `R ≥ max 8 (s+1)`,
-and `u ≥ 1`, `|Q_s^* − Q_s^{[R]}| ≤ 4 exp(−E_{R−4}(u)/2)` — the paper's
-"the resulting series is dominated by twice its first term". -/
+and `u ≥ 1`, `|Q_s^* − Q_s^{[R]}| ≤ 4 exp(−E_{R−4}(u)/2)`, by identifying
+`Q_s^* − Q_s^{[R]}` with the increment tail and invoking
+`abs_tsum_DeltaComb_tail_le`. -/
 theorem abs_QrefLimit_sub_Qref {s R : ℕ} (hs : 4 ≤ s) (hR : 8 ≤ R)
     (hsR : s + 1 ≤ R) {u : ℝ} (hu : 1 ≤ u) :
     |QrefLimit s u - Qref s R u| ≤ 4 * Real.exp (-(E (R - 4) u) / 2) := by

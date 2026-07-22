@@ -25,7 +25,7 @@ where the enclosures give `Q̃₄'(u) ∈ [6.24, 6.29]`, `Q̃₄''(u) ∈ [8.89,
 `log ξ ∈ [16.0903, 16.1795]`, `log₂ ξ ∈ [2.7782, 2.7837]`.  With
 `D = ξ·log ξ·log₂ ξ` and `P = log ξ·log₂ ξ + log₂ ξ + 1` the chain rule gives
 `q̃'(ξ) = Q̃₄'/D` and `q̃''(ξ) = (Q̃₄'' − Q̃₄'·P)/D²`, from which the three
-conjuncts follow: `Q̃₄' > 0`; `Q̃₄'' ≤ Q̃₄'·P` (since `P ≥ 48`, `Q̃₄'·P ≥ 300`);
+conjuncts follow: `Q̃₄' > 0`; `Q̃₄'' ≤ Q̃₄'·P` (since `P ≥ 48`, `Q̃₄'·P ≥ 6.24·48 > 299`);
 and the polynomial margin `Q̃₄'·(log₂ξ+1) − Q̃₄'' < 0.0601·Q̃₄'·logξ·log₂ξ`
 (LHS ≤ 14.92 < 16.76 ≤ RHS).
 

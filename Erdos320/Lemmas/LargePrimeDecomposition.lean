@@ -160,7 +160,7 @@ theorem den_dvd_of_mul_natCast_den_eq_one {z : ℚ} {L : ℕ}
   exact Nat.Coprime.dvd_of_dvd_mul_left z.reduced.symm hnat
 
 /-- Every reciprocal subset sum in `𝓔_N` becomes an integer after
-multiplication by the universal denominator `D_N(N)`. -/
+multiplication by the universal denominator `𝔇_N(N)`. -/
 theorem mul_smoothPart_den_eq_one {N : ℕ} {x : ℚ}
     (hx : x ∈ reciprocalSubsetSumSet N) :
     (x * (smoothPart N N : ℚ)).den = 1 := by
@@ -408,7 +408,7 @@ theorem prod_sigma_le_S {N Q : ℕ} (_hQN : Q < N) (hQ2 : N < Q * Q) :
 /-- **Coordinate rigidity.** If `x · L` and `y · L` are integers, `p` is a
 prime with `p ∣∣ L` at most to the first power (`¬ p² ∣ L`), and `x, y` have
 the same `p`-coordinate, then `p` does not divide the reduced denominator of
-`x - y`.  (Applied with `L = D_N(N)`, `Q < p ≤ N`: this is "the difference of
+`x - y`.  (Applied with `L = 𝔇_N(N)`, `Q < p ≤ N`: this is "the difference of
 any two subset sums in the resulting fibre has no prime larger than `Q` in
 its reduced denominator".) -/
 theorem not_dvd_den_sub_of_coord_eq {p L : ℕ} (hp : p.Prime) (hL0 : L ≠ 0)
@@ -487,8 +487,8 @@ theorem not_dvd_den_sub_of_coord_eq {p L : ℕ} (hp : p.Prime) (hL0 : L ≠ 0)
 /-- **Fibre smoothness.** Two elements of `𝓔_N` with equal coordinates at
 every large prime differ by a rational whose reduced denominator divides
 `𝔇_Q(N)`: at primes `q ≤ Q` the exponent is at most
-`ν_q(D_N(N)) = ⌊log N/log q⌋`, at primes `Q < q ≤ N` the equal coordinates
-force exponent `0` (`not_dvd_den_sub_of_coord_eq`, using `ν_q(D_N(N)) ≤ 1`
+`ν_q(𝔇_N(N)) = ⌊log N/log q⌋`, at primes `Q < q ≤ N` the equal coordinates
+force exponent `0` (`not_dvd_den_sub_of_coord_eq`, using `ν_q(𝔇_N(N)) ≤ 1`
 from `q² > Q² > N`), and primes `q > N` never occur. -/
 theorem den_sub_dvd_smoothPart {N Q : ℕ} (hQN : Q < N) (hQ2 : N < Q * Q)
     {x y : ℚ} (hx : x ∈ reciprocalSubsetSumSet N)

@@ -76,9 +76,9 @@ theorem sq_le_exp_half {x : ℝ} (hx : 20 ≤ x) : x ^ 2 ≤ Real.exp (x / 2) :=
 
 /-! ## Certified tower values
 
-The manuscript's certificate sections cite `E₃(1) > 3.8·10⁶`,
-`E₃(1) < 3.9·10⁶`, and `E₃(2) > 1.3·10²⁸`.  We derive them from digit
-bounds on `e` via `E₂(1) = eᵉ ∈ (15.154, 15.155)`. -/
+The manuscript cites `E₃(1) > 3.8·10⁶` (§6, at eq. `Q47-tail-majorant`),
+and `E₃(1) < 3.9·10⁶`, `E₃(2) > 1.3·10²⁸` (in `prop:constant-phase-backward`).
+We derive all three from digit bounds on `e` via `E₂(1) = eᵉ ∈ (15.154, 15.155)`. -/
 
 /-- `15.154 < E₂(1) < 15.155`, i.e. two-sided bounds on `eᵉ = 15.15426…`.
 Lower bound: 18 Taylor terms of `exp` at `2.7182818283 < e`.  Upper bound:

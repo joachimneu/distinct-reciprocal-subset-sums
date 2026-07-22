@@ -217,8 +217,8 @@ slackened `1.0601 → 1.061`; the exact `q̃'' ≤ 0` becomes
 `0 < q'`, `q'' ≤ exp(−3.6·10⁶)`, and `−ξ·q''(ξ) < 1.061·q'(ξ)`.
 
 The chord computation at `κ = 1.061` matches `prop:nonconstant`'s
-low-breakpoint computation: `A₊(0.04, 1.061) > 0.97934` and
-`(1.1163 + η)/0.97934 < 1.16` gives the margin of `prop:nonconstant`. -/
+low-breakpoint computation (`t = 0.04`, `σ₀ > 0.13889`): `A₊ > 0.97934`,
+`η < 0.01476`, and `(1.11635 + 0.01476)/0.97934 < 1.16`. -/
 theorem cert_low_curvature_limit {f : ℝ} (h1 : (2.787 : ℝ) ≤ f)
     (h2 : f ≤ 2.792) {ξ : ℝ} (hξ1 : 0.96 * lowBreakpointX f ≤ ξ)
     (hξ2 : ξ ≤ 1.04 * lowBreakpointX f) :

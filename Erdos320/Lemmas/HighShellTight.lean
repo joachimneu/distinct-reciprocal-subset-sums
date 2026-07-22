@@ -6,8 +6,9 @@ import Erdos320.Lemmas.HighShellLedger
 # Tight per-shell machinery for the high-finite-input shell ledger
 
 This file provides the precision-tight variant of the per-shell pipeline of
-`HighShellLedger.lean` — the form consumed by the full 154-shell ledger
-(`HighShellGrid1..8.lean`, `HighAggregate.lean`, `HighFiniteAssembly.lean`) —
+`HighShellLedger.lean` — the form consumed by the full 154-shell ledger for the
+high finite input `comp:high` (`HighShellGrid1..8.lean`, `HighAggregate.lean`,
+`HighFiniteAssembly.lean`) —
 and instantiates it on the three representative shells (`shell_2_tight`,
 `shell_61_tight`, `shell_121_tight`, one per collision regime `b ∈ {0,1,2}`).
 It tightens the three convenience loosenings of `HighShellLedger.lean`:

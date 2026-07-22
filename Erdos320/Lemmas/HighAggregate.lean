@@ -5,25 +5,27 @@ import Erdos320.Lemmas.HighShellTight
 
 This file proves the aggregate block contribution to
 `highFiniteInput : 3.2411 < F ⌊e⁶⁵⌋`, treating the shells `m ∈ [155, 10⁶]` as a
-single prime block (the certificate's `high_bridge_lower` aggregate step).  The
-block uses the collision multiplicity
-`b = 2` with the value-at-`m=154` numerator span `lcm(1..154)·H₁₅₄` (valid for
-all `m ≥ 154` because `{1,…,154} ⊆ {1,…,m}`, so `sigma p m ≥ sigma p 154`
-uniformly — `sigma_mono_in_m`), and the floor `S(154) ≥ sLowerBGMS 154`.
+single prime block — the aggregate step of the `comp:high` certificate (paper
+§8 "The high finite input"), with capstone `aggregate_lower`.  The block uses the collision
+multiplicity `b = 2` (`eq:aggregate-collision-bound`) against the numerator span
+`V₁₅₄ = lcm(1..154)·H₁₅₄` (paper's `V_m`, `eq:numerator-span-recurrence`), valid
+for all `m ≥ 154` because `{1,…,154} ⊆ {1,…,m}` forces `sigma p m ≥ sigma p 154`
+uniformly (`sigma_mono_in_m`), together with the floor `S(154) ≥ sLowerBGMS 154`.
 
 * `block_collision_lower_tight` — `shell_collision_lower_tight`
   (`HighFiniteProof.lean`) with the collision carrier `m₀` and the shell
   threshold denominator `D` decoupled (they coincide in the single-shell form);
-  uses the *tight* integer-power hypothesis `W < r^(b+1)` (with the real-valued
-  `log W / log r ≤ b` the aggregate would force `b = 3`, dropping the total below
-  `3.2411`).
+  uses the *tight* integer-power hypothesis `W < r^(b+1)` (here `W = V₁₅₄`,
+  `r = N₁/(10⁶+1)`).  A cruder real-valued `log W / log r ≤ b` criterion would
+  force `b = 3` and push the total below `3.2411`.
 * `block_contribution_pos` — the monotone per-block bound over an abstract prime
   set `P`, mirroring `shell_contribution_pos`.
-* `sigma_mono_in_m` — `σ_p(m)` is monotone in `m` (`Σ_p(m) ⊆ Σ_p(m')`).
+* `sigma_mono_in_m` — `σ(p,m)` is monotone in `m` (`modularImage p m ⊆
+  modularImage p m'`).
 * `blockPrimes` and the Dusart count `block_card_lower_dusart` over the wide
   interval `(⌊N/(10⁶+1)⌋, ⌊N/155⌋]`.
 * `aggregate_lower` — the final block contribution
-  `Cagg·(64.447897 − 9.279) ≤ ∑_{155 ≤ m ≤ 10⁶} ∑_{p} log σ_p(m)`.
+  `Cagg·(64.447897 − 9.279) ≤ ∑_{155 ≤ m ≤ 10⁶} ∑_{p} log σ(p,m)`.
 -/
 
 namespace Erdos320

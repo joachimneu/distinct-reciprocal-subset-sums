@@ -5,10 +5,10 @@ import Mathlib.Topology.Algebra.InfiniteSum.Order
 /-!
 # Upper half of the averaging relation (`prop:averaging-relation`)
 
-The manuscript's `prop:averaging-relation` asserts
-`𝓡(X) = F(e^X) − 𝓑(X) ≪ (log X)²/X`.  This file proves the **upper** half in
-fully explicit-constant form at the standing threshold `X ≥ 10⁷` of
-`AveragingSetup`:
+The manuscript's `prop:averaging-relation` asserts that
+`𝓡(X) := F(e^X) − 𝓑(X)` satisfies `|𝓡(X)| ≪ (log X)²/X`.  This file proves the
+**upper** half in fully explicit-constant form at the standing threshold
+`X ≥ 10⁷` of `AveragingSetup`:
 ```
 averaging_upper : F(e^X) − 𝓑(X) ≤ 7·(log X)²/X       (X ≥ 10⁷)
 ```
@@ -26,9 +26,8 @@ explicit inputs of `AveragingSetup`):
 3. **Per-prime cap** (`avg_log_sigma_le_min`): on the `m`-th shell,
    `log σ_p(m) ≤ min(g(m), X)` — the paper's `log σ_p(m) ≤ min(g(m), log p)`
    with `log p ≤ X − log m ≤ X`.  (On the upper side the shell-dependent cap
-   `X − log m` can simply be *enlarged* to the common cap `X`, so no
-   cap-transport estimate is needed: the shell estimate is multiplied
-   directly by `min(g(m), X)`.)
+   `X − log m` is simply enlarged to the common cap `X`, so no cap-transport
+   estimate is needed.)
 4. **Shell count** (`avg_normalized_shell_count_le`): the FKS input
    (`primeInterval_upper`) gives
    `(X/N)·P_m ≤ (1 + 2(log(m+1)+1)/X)/(m(m+1)) + (X/N)(𝓔(N/m)+𝓔(N/(m+1)))`,

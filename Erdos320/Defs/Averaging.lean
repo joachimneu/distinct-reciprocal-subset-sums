@@ -91,9 +91,9 @@ noncomputable def rho (x : ℝ) : ℝ :=
 /-- `H̄_r(u) = 𝓑(E_{r-1}(u))`: the averaged value at depth `r` (eq. `Hbar`). -/
 noncomputable def Hbar (r : ℕ) (u : ℝ) : ℝ := B (E (r - 1) u)
 
-/-- `ρ_r(u)`: the recurrence error at depth `r` (eq. `a-rho`); by
-`E (r-1+1) = exp ∘ E (r-1)` it equals `rho (E (r-1) u)` for `r ≥ 1`
-(see `rhoDepth_eq_rho`). -/
+/-- `ρ_r(u) = ρ(E_{r-1}(u))`: the recurrence error at depth `r` (eq. `a-rho`).
+For `r ≥ 1`, `E_r = exp ∘ E_{r-1}` lets `rhoDepth_eq` unfold this to the paper's
+explicit form `E_r E_{r-1}/m_*(E_r) − 𝓑(E_{r-1})`. -/
 noncomputable def rhoDepth (r : ℕ) (u : ℝ) : ℝ := rho (E (r - 1) u)
 
 /-- For `r ≥ 1`, `ρ_r(u)` unfolds to the paper's

@@ -3,10 +3,12 @@ import Erdos320.Lemmas.CertificateTransfer
 /-!
 # Phase-coordinate enclosures for the certificate windows
 
-The nonconstancy certificates work at a scale `ξ` (the number `N` of the paper,
-regarded as a positive real) and reason about the breakpoint coordinate
-`u = log₃ ξ = iteratedLog 3 ξ` together with the reconstructed scale
-`E k u` for `k = 1, 2, 3`.  On the working range `E 3 (log₃ ξ) = ξ` and, one
+The nonconstancy certificates (§8 `sec:certificates`, the low finite input
+`comp:low`) work at a scale `ξ` (the number `N` of the paper, regarded as a
+positive real) and reason about the breakpoint coordinate
+`u = log₃ ξ = iteratedLog 3 ξ` — the data-transform coordinate
+`u(f) = log₃ x(f)` of `eq:data-transform` — together with the reconstructed
+scale `E k u` for `k = 1, 2, 3`.  On the working range `E 3 (log₃ ξ) = ξ` and, one
 exponential down at a time,
 
 ```

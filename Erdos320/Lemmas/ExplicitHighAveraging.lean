@@ -44,7 +44,7 @@ Design notes (deviations from the paper's displayed constants, all safe):
   `exp(−0.7·√X) ≤ 0.001/X` (`high_tiny_le`).
 * The paper's ledger constants `1.72·10⁻²⁴`, `8.0·10⁻²⁶`, `6.5·10⁻²⁵` are
   realized as the master enclosure
-  `−(8.7(log X + 2) + 0.2)/X < 𝓡(X) ≤ (0.7003((log X+1)²/2+1) +
+  `−(8.7(log X + 2) + 0.2)/X ≤ 𝓡(X) ≤ (0.7003((log X+1)²/2+1) +
   1.021(log X+2) + 0.2)/X`, which evaluates to `|𝓡(X)| < 1.94·10⁻²⁴` at the
   window edge — inside the paper's `2·10⁻²⁴` — and is dominated by
   `(log X+2)²/X` for every `X ≥ 8·10²⁶`.
@@ -2782,9 +2782,8 @@ theorem high_rho_abs_lt {x : ℝ} (hx : (8e26:ℝ) ≤ x) :
 eq. `explicit-high-rho`): in the notation of eq. `a-rho`, if
 `E_{s−1}(u) ≥ 8·10²⁶` then `|ρ_s(u)| < 10·E_{s−2}(u)²/E_{s−1}(u)`.
 
-Hypothesis packaging: `2 ≤ s` is required for the `ℕ`-subtraction identity
-`E_{s−1}(u) = exp(E_{s−2}(u))` (the paper's depth indices start the
-recurrence at `s ≥ 2`); no hypothesis on `u` is needed beyond `hbig`. -/
+Hypothesis packaging: `2 ≤ s` is needed only for the `ℕ`-subtraction identity
+`E_{s−1}(u) = exp(E_{s−2}(u))`; no hypothesis on `u` is needed beyond `hbig`. -/
 theorem rhoDepth_lt_of_big {s : ℕ} (hs : 2 ≤ s) {u : ℝ}
     (hbig : (8e26:ℝ) ≤ E (s - 1) u) :
     |rhoDepth s u| < 10 * (E (s - 2) u ^ 2 / E (s - 1) u) := by

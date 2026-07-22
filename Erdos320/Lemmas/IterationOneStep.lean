@@ -48,11 +48,10 @@ For `d : IterationData` and `d.r₀ ≤ r` (so `8 ≤ r`), on the phase interval
 
 Paper vs. Lean:
 
-* All Vinogradov constants of the closing estimates are explicit:
-  `C₀ = K`, and the `(d_r, λ_r, s_r)` recursion reads
-  `d_r ≤ 6M + K + 14λ_r ε_r + s_r`, `λ_{r+1} ≤ 2d_r + 6M + 7K`,
-  `s_{r+1} ≤ 6M + K + 7λ_r ε_r` — exactly the coupling shape the paper's
-  contraction consumes (`ε_r → 0` geometric).
+* All Vinogradov constants of the closing estimates are explicit (`C₀ = K`
+  in the sup recursion; the `(d_r, λ_r, s_r)` bounds stated per deliverable
+  above).  Together these are the coupled recursion the paper's contraction
+  consumes (`ε_r → 0` geometric).
 * The paper's Tonelli exchange in eq. `averaging-localization` is realized
   measure-free, by integration by parts against the primitive
   `Φ(t) = ∫₁ᵗ a_rJ_r` and the subprobability bound `Φ ≤ J_{r+1}` (`mass_le`).

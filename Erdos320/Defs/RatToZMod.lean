@@ -39,7 +39,8 @@ open Finset
 /-- Reduction of a rational with denominator prime to `p` into `ZMod p`:
 `x = num/den ↦ num · den⁻¹` with the inverse taken in `ZMod p`.  For
 denominators divisible by `p` the value is junk (Mathlib's `ZMod`-inverse of
-a non-unit is `0`); every lemma below assumes `¬ p ∣ x.den`. -/
+a non-unit is `0`), so the lemmas below that pin down its value assume
+`¬ p ∣ x.den` (or restrict to integers). -/
 def ratToZMod (p : ℕ) (x : ℚ) : ZMod p := (x.num : ZMod p) * (x.den : ZMod p)⁻¹
 
 /-- For a prime `p`, the hand-rolled reduction `ratToZMod p` **is** Mathlib's

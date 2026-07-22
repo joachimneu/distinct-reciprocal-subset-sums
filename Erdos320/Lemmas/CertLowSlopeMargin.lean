@@ -4,16 +4,17 @@ import Erdos320.Lemmas.PhaseEnclosure
 /-!
 # Certificate `comp:low`, eq. `low-slope-margin`, proved in Lean
 
-The manuscript's directed-interval certificate asserts the slope-margin bound
-`x(f)·q̃'(x(f)) = Q̃₃(u(f)) / log x(f) > 0.1389` throughout the wide low input
-range `f ∈ [2.78, 2.80]`, where `x(f) = 65 659 969·f / log 65 659 969` is the
-low breakpoint coordinate and `u(f) = log₃ x(f)`
-(transcript `> 0.1390`).  Here the
-equivalent core-level form
+The manuscript's display `eq:low-slope-margin` asserts the slope-margin bound
+`x(f)·q_br'(x(f)) > 0.13889` throughout the wide low input range
+`f ∈ [2.78, 2.80]`, where `x(f) = 65 659 969·f / log 65 659 969` is the low
+breakpoint coordinate.  Via the exact slope identity `x·q_br'(x) = Q₃*(u)/log x`
+(`eq:q-slope`, `u = log₃ x`), this reads `Q₃*(u(f))/log x(f) > 0.13889` for the
+limiting reference function `Q₃*`.  Here the equivalent **core-level** form
 `0.1389 · log x(f) < Q̃₃(log₃ x(f))`
-is proved inside Lean, by the same technique as `CertLowQ4Positive.lean`: the closed form
-of `Q̃₃` (`CoreClosedForm.lean`) combined with the explicit rational enclosures
-of `E₁,E₂,E₃` on the certified window (`PhaseEnclosure.lean`).
+is proved inside Lean, for the reference core `Q̃₃ = QrefCore3` and by the same
+technique as `CertLowQ4Positive.lean`: the closed form of `Q̃₃`
+(`CoreClosedForm.lean`) combined with the explicit rational enclosures of
+`E₁,E₂,E₃` on the certified window (`PhaseEnclosure.lean`).
 
 For `f ∈ [2.78, 2.80]` the breakpoint coordinate lands in
 `x(f) ∈ [10 140 761, 10 213 830] ⊆ [10 140 000, 10 214 000]`, the sharp phase

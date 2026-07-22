@@ -6,9 +6,9 @@ import Erdos320.Lemmas.IteratedExpBounds
 
 /-!
 # The threshold estimate (paper `lem:threshold`) and the recurrence-error
-# bound (paper eq. `rho-small` of `lem:exact-recurrence`)
+# bound (paper `eq:rho-small` of `lem:exact-recurrence`)
 
-The paper's `lem:threshold` (eqs. `threshold`, `threshold-additive`) locates
+The paper's `lem:threshold` (`eq:threshold`, `eq:threshold-additive`) locates
 the threshold index `m_*(X)` at `X·log X/F(X)` up to relative error
 `O((log₂X)²/(F(X)·log X))`; the additive form is
 ```
@@ -21,7 +21,7 @@ argument explicit forces a concrete starting point, and `exp(exp 20)`
 (≈ `10^(2.1·10⁸)`) is chosen so that `log X ≥ e²⁰ > 10⁷` (the averaging
 relation `averaging_relation` applies at both scales `log X` and `log m`)
 and `log₂X ≥ 20` (so `(log₂X)²/log X ≤ e⁻¹⁰ ≤ 1/20000`, which keeps every
-constant absorption below elementary).  Every numerical use of the lemma in
+constant absorption elementary).  Every numerical use of the lemma in
 the manuscript is at iterated-exponential scales far above this threshold.
 
 Along the way we prove the paper's intermediate estimates with explicit
@@ -31,13 +31,13 @@ constants:
   `thr_FReal_lower` (`0.34 ≤ F(X)`, from the `m = 1` summand of `𝓑`) and
   `thr_FReal_upper` (`F(X) ≤ log₂X + 3`, from the dyadic bound
   `thr_B_le : 𝓑(Y) ≤ log Y + 2`).
-* eq. `slow-variation`: `threshold_slow_variation`
+* `eq:slow-variation`: `threshold_slow_variation`
   (`|F(m) − F(X)| ≤ 15·(log₂X)²/log X` on the window
   `log X ≤ log m ≤ log X + 2·log₂X`, which contains `[m₀/2, 2m₀]`).
 
 Finally, `rhoDepth_abs_le` combines `threshold_additive` at `X = E_r(u)`
 with `averaging_relation` at `E_{r-1}(u)` to obtain the paper's
-eq. `rho-small` (`lem:exact-recurrence`) with explicit constant:
+`eq:rho-small` (`lem:exact-recurrence`) with explicit constant:
 ```
 |ρ_r(u)| ≤ 107·E_{r-2}(u)²/E_{r-1}(u)   for r ≥ 5, u ∈ [1, e].
 ```
@@ -275,15 +275,16 @@ theorem thr_FReal_upper {X : ℝ} (hX : Real.exp (Real.exp 20) ≤ X) :
   -- `F ≤ 𝓑(log X) + 7·A ≤ (log₂X + 2) + 7/20000 ≤ log₂X + 3`
   linarith [habs.2]
 
-/-! ## Slow variation of `F` across the threshold window (eq. `slow-variation`) -/
+/-! ## Slow variation of `F` across the threshold window (`eq:slow-variation`) -/
 
-/-- The paper's eq. `slow-variation` with explicit constant: if the integer
+/-- The paper's `eq:slow-variation` with explicit constant: if the integer
 `m` lies in the logarithmic window `log X ≤ log m ≤ log X + 2·log₂X` (which
 contains the paper's `[m₀/2, 2m₀]`), then
 `|F(m) − F(X)| ≤ 15·(log₂X)²/log X`.  Proof as in the paper: two
 applications of the averaging relation (`prop:averaging-relation`) at the
 scales `log m` and `log X`, plus the `𝓑`-increment bound from
-`𝓑'(t) = 1/m_*(t) < (log 2)/t` (`lem:B-slopes`, `lem:elementary-threshold`). -/
+`𝓑'(t) = 1/m_*(t) < (log 2)/t` (`eq:B-prime` of `lem:B-slopes`,
+`lem:elementary-threshold`). -/
 theorem threshold_slow_variation {X : ℝ} (hX : Real.exp (Real.exp 20) ≤ X)
     {m : ℕ} (hm1 : Real.log X ≤ Real.log m)
     (hm2 : Real.log m ≤ Real.log X + 2 * Real.log (Real.log X)) :
@@ -396,10 +397,10 @@ theorem thr_natCast_mul_FReal {m : ℕ} (hm : 0 < m) :
   rw [FReal, Nat.floor_natCast]
   field_simp
 
-/-! ## The threshold estimate, additive form (paper eq. `threshold-additive`) -/
+/-! ## The threshold estimate, additive form (paper `eq:threshold-additive`) -/
 
 set_option maxHeartbeats 1600000 in
-/-- Paper `lem:threshold`, eq. `threshold-additive`, explicit form: for
+/-- Paper `lem:threshold`, `eq:threshold-additive`, explicit form: for
 `X ≥ exp(exp 20)`,
 ```
 |X·log X/m_*(X) − F(X)| ≤ 100·(log₂X)²/log X.
@@ -695,9 +696,9 @@ theorem threshold_additive {X : ℝ} (hX : Real.exp (Real.exp 20) ≤ X) :
   · linarith
   · linarith
 
-/-! ## The recurrence-error bound (paper eq. `rho-small`, `lem:exact-recurrence`) -/
+/-! ## The recurrence-error bound (paper `eq:rho-small`, `lem:exact-recurrence`) -/
 
-/-- Paper eq. `rho-small` of `lem:exact-recurrence`, explicit form: for
+/-- Paper `eq:rho-small` of `lem:exact-recurrence`, explicit form: for
 depth `r ≥ 5` and phase `u ∈ [1, e]`,
 ```
 |ρ_r(u)| ≤ 107·E_{r-2}(u)²/E_{r-1}(u).

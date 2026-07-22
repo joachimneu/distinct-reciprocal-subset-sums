@@ -56,8 +56,8 @@ theorem continuous_E (k : ℕ) : Continuous (E k) := by
   | zero => exact continuous_id
   | succ k ih => exact Real.continuous_exp.comp ih
 
-/-- The chain-rule factor `a_r = ∏_{j=1}^{r-2} E_j` of eq. `a-rho` is
-continuous. -/
+/-- The chain-rule factor `a_r` of eq. `a-rho` (defined there as `E_{r-2}'`,
+which by `hasDerivAt_E` is the product `∏_{j=1}^{r-2} E_j`) is continuous. -/
 theorem continuous_a (r : ℕ) : Continuous (a r) :=
   continuous_finsetProd _ fun j _ => continuous_E j
 

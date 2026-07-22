@@ -8,14 +8,14 @@ Combining the two halves (`AveragingUpper.lean`, `AveragingLower.lean`):
 ```
 𝓡(X) = F(e^X) − 𝓑(X)  satisfies  |𝓡(X)| ≤ 7·(log X)²/X   for X ≥ 10⁷.
 ```
-This is the paper's `𝓡(X) ≪ (log X)²/X` (eq `averaging-relation`) with the
+This is the paper's `𝓡(X) ≪ (log X)²/X` (eq. `averaging-relation`) with the
 implicit constant and threshold made explicit (7 and 10⁷).  The paper's
 `O`-statement is recovered a fortiori.
 -/
 
 namespace Erdos320
 
-/-- Paper `prop:averaging-relation` (eq `averaging-relation`), explicit form:
+/-- Paper `prop:averaging-relation` (eq. `averaging-relation`), explicit form:
 `|𝓡(X)| ≤ 7 (log X)²/X` for `X ≥ 10⁷`. -/
 theorem averaging_relation {X : ℝ} (hX : (10 : ℝ) ^ 7 ≤ X) :
     |averagingError X| ≤ 7 * Real.log X ^ 2 / X := by

@@ -12,7 +12,8 @@ This file proves the *asymptotic* conjunct of the paper's main theorem
 log S(N) = (N / log N) · (∏_{j=3}^{h(N)} log_j N) · Φ(u_N) · (1 + 1/log₃N + o(1/log₃N)),
 ```
 with the `o(1/log₃N)` realized explicitly as `O(1/(log₃N · log₄N))`
-(`main_asymptotic`), together with the paper's uniformity display
+(`main_asymptotic`); its normalized form eq. `main-uniform-error`
+(`main_uniform_error`); and the paper's uniformity display
 eq. `main-uniformity`, both in ε-form (`main_uniformity`) and as a
 `Filter.Tendsto` over `atTop` (`main_uniformity_tendsto`).  The proof is the
 paper's: instantiate `prop:phase` (`phase_asymptotic`) at `r = h(N)`,

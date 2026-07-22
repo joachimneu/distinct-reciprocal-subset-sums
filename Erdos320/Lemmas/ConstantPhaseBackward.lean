@@ -1125,8 +1125,8 @@ theorem cpb_step_at_depth {C : ℝ} (hC : 0 ≤ C) {s : ℕ} (hs : 6 ≤ s)
 /-! ## Scalar ledgers for the final two depths -/
 
 /-- Depth-5 scalar ledger (paper: `e^{−w/2} + w e^{−w/20} + 2e^{−3w/20}
-< e^{−w/25}` for `w ≥ 9.7·10⁶`; here with the propagated coefficient `1`
-already absorbed). -/
+< e^{−w/25}` for `w ≥ 9.7·10⁶`; the third term carries coefficient `1` here,
+the paper's factor `2` being absorbed via `a₅ ≥ w/2` during propagation). -/
 theorem cpb_depth5_scalar {w : ℝ} (hw : 9.7e6 ≤ w) :
     Real.exp (-(w) / 2) + w * Real.exp (-(w) / 20) + Real.exp (-(3 * w) / 20)
       ≤ Real.exp (-(w) / 25) := by

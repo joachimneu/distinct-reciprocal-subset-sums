@@ -84,8 +84,8 @@ theorem D_five (u : ℝ) : D 5 u = u * E 1 u * E 2 u := by
     Finset.prod_range_succ, show (2 : ℕ) = 1 + 1 from rfl,
     Finset.prod_range_succ, Finset.prod_range_one, E_zero]
 
-/-- `A₂(u) = 1`: the cumulative normalization below its first summand
-(empty sum in eq. `D-identity`'s `A_j = 1 + ∑_{k=3}^j D_k`). -/
+/-- `A₂(u) = 1`: the base of the cumulative normalization
+`A_j = 1 + ∑_{k=3}^j D_k`, whose sum is empty for `j = 2`. -/
 theorem A_two (u : ℝ) : A 2 u = 1 := by
   unfold A
   rw [Finset.Icc_eq_empty (by omega), Finset.sum_empty, add_zero]
@@ -405,10 +405,11 @@ theorem Bref_nonneg {u : ℝ} (hu : 0 < u) (j : ℕ) : 0 ≤ Bref j u := by
   rw [(hasDerivAt_A j u).deriv]
   exact Finset.sum_nonneg fun i _ => mul_nonneg (a_pos _ u).le (A_pos hu _).le
 
-/-- `B_j ≤ A_{j-1}` for `j ≥ 3`, `u ≥ 1`: the induction engine behind
-the auxiliary value estimate ("A direct check at `j = 4` and induction
-first give the auxiliary estimate", before eq. `Bj-derivative-bound`; here
-the direct check already succeeds at `j = 3`). -/
+/-- `B_j ≤ A_{j-1}` for `j ≥ 3`, `u ≥ 1`: a weakened form of the paper's
+auxiliary value estimate `0 ≤ B_j ≤ 2A_{j-1}/E_{j-2}` (which implies it via
+`E_{j-2} ≥ 2`), before eq. `Bj-derivative-bound`.  Proved by the induction
+the paper describes as "a direct check at `j = 4` followed by induction";
+here the direct check already succeeds at `j = 3`. -/
 theorem Bref_le_A_pred {j : ℕ} (hj : 3 ≤ j) {u : ℝ} (hu : 1 ≤ u) :
     Bref j u ≤ A (j - 1) u := by
   induction j, hj using Nat.le_induction with

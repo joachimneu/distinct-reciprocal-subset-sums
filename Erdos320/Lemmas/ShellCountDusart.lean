@@ -1,6 +1,7 @@
 import Erdos320.Lemmas.ShellDecomposition
 import Erdos320.Defs.PrimeCounting
 import Erdos320.Assumptions
+import Mathlib.Analysis.Complex.ExponentialBounds
 
 /-!
 # Dusart-`ϑ`–based lower bound on shell prime counts (for the high finite input)

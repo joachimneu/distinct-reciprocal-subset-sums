@@ -18,7 +18,7 @@ digit constants (`Real.log_two_gt_d9`/`_lt_d9` and the `three`/`five`
 analogues).  Every other prime bound is proved by an `exp`-comparison
 (`Real.le_log_iff_exp_le` / `Real.log_le_iff_le_exp`), discharging the resulting
 `exp`-of-rational bound through the digit-of-`e` constants
-(`Real.exp_one_lt_d9`, `Real.exp_one_gt_d9`) and a degree-12 Taylor enclosure
+(`Real.exp_one_lt_d9`, `Real.exp_one_gt_d9`) and a 12-term Taylor enclosure
 (`Real.exp_bound'`, `Real.sum_le_exp_of_nonneg`), mirroring `PhaseEnclosure.lean`
 and `ShellCountDusart.lean`.  The composite bounds are assembled from
 `Real.log (a*b) = log a + log b` (`logMul`) along the smallest-prime-factor tree,

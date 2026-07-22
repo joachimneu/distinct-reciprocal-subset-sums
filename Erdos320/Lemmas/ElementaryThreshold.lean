@@ -238,11 +238,10 @@ theorem li_gap_lower {y : ℝ} (hy : 4 ≤ y) :
 
 For `log y ≥ 9·10⁶` the Fiori–Kadiri–Swidinsky error term
 `9.2211 · y · √(log y) · exp(−0.8476·√(log y))` is at most
-`y / (10⁹⁰ · log y)` — exactly the uniform ledger the paper's explicit-range
-proof states and uses (`Err_π(y) ≤ 10⁻⁹⁰·y/log y` for
-`log y ≥ 9·10⁶`), with room to spare for the `m ≍ 4t log(2t)`
-bookkeeping uniformly in `t` (the extra `1/log y` factor is what makes the
-comparison to `t` uniform). -/
+`y / (10⁹⁰ · log y)` — the paper's explicit-range ledger
+`Err_π(y) ≤ 10⁻⁹⁰·y/log y`.  The extra `1/log y` factor gives the room
+needed to compare against `t` uniformly under the `m ≍ 4t log(2t)`
+bookkeeping. -/
 
 /-- `√x ≥ 3000` once `x ≥ 9·10⁶ = 3000²`. -/
 theorem three_thousand_le_sqrt {x : ℝ} (hx : (9 * 10 ^ 6 : ℝ) ≤ x) :

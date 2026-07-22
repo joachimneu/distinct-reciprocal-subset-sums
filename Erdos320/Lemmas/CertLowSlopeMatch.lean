@@ -5,13 +5,14 @@ import Erdos320.Lemmas.CertLowCurvature
 /-!
 # Certificate `comp:low`, eq. `low-slope-match`, proved in Lean
 
-The manuscript's directed-interval certificate asserts that on the wide low
-input range `f ∈ [2.78, 2.80]` the slope-matched candidate constant computed
-from the core stays below `1.1163`, in the form
+The manuscript's display `eq:low-slope-match` asserts that on the wide low input
+range `f ∈ [2.78, 2.80]` the slope-matched candidate constant
+`f·y(f)/((log N₀)·Q₃*(u(f)))` stays below `1.11635`, where `y(f) = log x(f)`,
+`u(f) = log₃ x(f)`, `x(f) = 65 659 969·f/log 65 659 969` is the low breakpoint
+coordinate, and `N₀ = 65 659 969 = ⌊e¹⁸⌋`.  Here the tighter **core-level** form
 `f·log x(f) < 1.1163·(log N₀ · Q̃₃(log₃ x(f)))`,
-where
-`x(f) = 65 659 969·f/log 65 659 969` is the low breakpoint coordinate and
-`N₀ = 65 659 969 = ⌊e¹⁸⌋`.  Here that evaluation is proved inside Lean.
+for the reference core `Q̃₃ = QrefCore3` and constant `1.1163 < 1.11635`, is
+proved inside Lean.
 
 Via the exact core slope identity `cert_qCore_slope`
 (`Q̃₃(log₃ ξ) = ξ·log ξ·q̃'(ξ)`) and the linear relation `f = ξ·log N₀/N₀`, the
@@ -269,7 +270,8 @@ private theorem match_Qp_lb :
   linarith [hAlo, hAe2, hrecip, hrem]
 
 set_option maxHeartbeats 1000000 in
-/-- **(⋆⋆) at the right endpoint:** `q̃'(10 213 830) > 1/(1.1163·N₀)`. -/
+/-- **(⋆) at the right endpoint** (via the cleared-denominator form (⋆⋆)):
+`q̃'(10 213 830) > 1/(1.1163·N₀)`. -/
 private theorem match_endpoint_slope :
     1 / (1.1163 * 65659969) < deriv qCore 10213830 := by
   have hξ39 : (3.9e6 : ℝ) < 10213830 := by norm_num

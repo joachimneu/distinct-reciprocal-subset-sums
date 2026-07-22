@@ -32,18 +32,18 @@ the elementary numerics of the paper's certificate sections:
   `cert_hasDerivAt_deriv_qLimit`, and the `qCore` analogues), and the exact
   slope identity `ξ·q_br'(ξ) = Q₃*(log₃ ξ)/log ξ` (`cert_qLimit_slope`,
   `cert_qCore_slope`).
-* **Core→limit transfer on the certificate windows** — using the proved
-  `R7-tail` bounds (`≤ exp(−3.7·10⁶)`, `BackwardReferenceLimit.lean`), each
-  core certificate constant is carried to the limit objects with an explicit
-  slackening (documented at each lemma; the curvature constants move
-  `1.0601 → 1.061` and `1.0201 → 1.021`, the slope-match `1.1163 → 1.11635`,
-  the high slope-match `1.1794 → 1.1793`, the margin `0.1389 → 0.13889`,
-  `4.79 → 4.789`, `0.0399 → 0.0398`).  Since the limit second derivative
-  cannot be certified `≤ 0` exactly, the transferred form is
-  `≤ exp(−3.6·10⁶)`, together with a *quantitative* window-wide slope lower
-  bound (`cert_low_qCore_deriv_window_lb`, `cert_low_qLimit_deriv_window_lb`)
-  obtained from `eq:low-slope-margin` at the breakpoint plus the certified
-  curvature (monotonicity of `ξ ↦ q̃'(ξ)·ξ²` on the window).
+* **Core→limit derivative tails at the `ξ`-level** — the `R7-tail` bound
+  `‖Q₄*−Q̃₄‖_{C²[1,e]} < exp(−3.7·10⁶)` (`eq:R7-tail`,
+  `BackwardReferenceLimit.lean`) pushed through the chain-rule factors of
+  `log₃` (each of size `≤ 1`) to compare the two profiles' derivatives
+  directly: `|q_br'(ξ) − q̃'(ξ)| ≤ exp(−3.7·10⁶)`
+  (`cert_abs_deriv_qLimit_sub_qCore_le`) and
+  `|q_br''(ξ) − q̃''(ξ)| ≤ exp(−3.6·10⁶)`
+  (`cert_abs_deriv2_qLimit_sub_qCore_le`, two `u`-level tails absorbed by one
+  `exp(10⁵)` of slack).  The tiny-exponential helpers above crush these tails
+  to `10⁻⁴⁰`.  The consumers that turn these into slackened certificate
+  constants and window-wide slope lower bounds live in
+  `CertificateConsumers.lean`.
 * **The low `ρ₄` ledger** (`comp:low`, proof around
   `eq:threshold-displacement`) — `|ρ(w)| < 3.6·10⁻⁵` on the enlarged low
   window `[9 725 449, 10 632 947]` (`cert_low_rho_ledger`,
@@ -425,7 +425,8 @@ theorem cert_E_three_eq (v : ℝ) :
     show (2 : ℕ) = 1 + 1 from rfl, E_succ,
     show (1 : ℕ) = 0 + 1 from rfl, E_succ, E_zero]
 
-/-- On `ξ ≥ 15 > e^e`'s base, `E₃` inverts `log₃` from the left. -/
+/-- For `ξ ≥ 15` (comfortably past `e`, so all three nested logs are
+positive), `E₃ = exp∘exp∘exp` inverts `log₃` from the left. -/
 theorem cert_E_three_iteratedLog {ξ : ℝ} (hξ : (15 : ℝ) ≤ ξ) :
     E 3 (iteratedLog 3 ξ) = ξ := by
   have hξ0 : (0 : ℝ) < ξ := by linarith

@@ -4,18 +4,17 @@ import Erdos320.Lemmas.PhaseEnclosure
 /-!
 # Certificate `comp:low`, eq. `low-Q4-positive`, proved in Lean
 
-The manuscript's directed-interval certificate asserts `Q̃₄(log₃ w) > 4.79`
-throughout the enlarged low window `w ∈ [9 725 449, 10 632 947]`
-(transcript `> 4.8` for the limit).  Here
-that inequality is proved inside Lean: the closed form of
-`QrefCore4` (`CoreClosedForm.lean`) is combined with the explicit rational
-enclosures of `E₁,E₂,E₃` on the window (`PhaseEnclosure.lean`).  Over the
-window `QrefCore4 ≥ 5.007…`, with wide margin over `4.79`.
+The manuscript's display `eq:low-Q4-positive` states `Q₄*(log₃ w) > 4.789` on
+the enlarged low window `w ∈ [9 725 449, 10 632 947]`, for the limiting depth-4
+reference function `Q₄*`.  Here `lowQ4PositiveCert` proves the corresponding
+**core-level** inequality `Q̃₄(log₃ w) > 4.79` for the explicit reference core
+`Q̃₄ = QrefCore4` (`eq:reference-core`): its closed form (`CoreClosedForm.lean`)
+combined with the explicit rational enclosures of `E₁,E₂,E₃` on the window
+(`PhaseEnclosure.lean`).  Over the window `QrefCore4 ≥ 5.007…`, a wide margin
+over `4.79`.
 
-The theorem `lowQ4PositiveCert` certifies the core-level inequality behind
-the paper's display `eq:low-Q4-positive` on exactly that window; the
-core-to-limit transfer to the displayed constant `4.789` happens in
-`CertificateTransfer.lean`.
+The core-to-limit transfer from `Q̃₄` to the displayed `Q₄*` (their `C²`-gap is
+`< exp(-3.7·10⁶)`, `eq:R7-tail`) happens in `CertificateTransfer.lean`.
 -/
 
 namespace Erdos320
@@ -58,7 +57,7 @@ theorem lowQ4PositiveCert (w : ℝ) (h1 : (9725449 : ℝ) ≤ w)
       ≤ (u * e1 + u - 3.79) * (e1 ^ 2 * e2 ^ 2 * e3) :=
     mul_le_mul_of_nonneg_right hkey hden.le
   have hmid : (0 : ℝ) ≤ (e1 * e2 + e1 ^ 2 * e2 + u * e1 ^ 2 * e2) * e3 := by positivity
-  -- upper bounds for the `Q` monomials (all with e₃-free, so bounded)
+  -- upper bounds for the `Q` monomials (all e₃-free, hence bounded on the window)
   have hQ : (-10000 : ℝ) ≤
       -1 - e1 ^ 2 - e1 ^ 2 * e2 ^ 2 - u * e1 ^ 2 - u * e1 ^ 2 * e2 ^ 2
         - u * e1 ^ 3 * e2 ^ 2 := by

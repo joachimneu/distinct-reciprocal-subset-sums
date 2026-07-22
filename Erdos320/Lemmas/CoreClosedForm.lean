@@ -4,16 +4,19 @@ import Mathlib.Analysis.Calculus.Deriv.Pow
 /-!
 # Explicit closed forms for the reference core `Q̃₄`, `Q̃₃` (eq. `reference-core`)
 
-The reference core of §6, `Q̃₄ = 𝓛₄(A₅ + B₅)` and `Q̃₃ = 𝓛₃ Q̃₄`
-(`Erdos320.QrefCore4`, `Erdos320.QrefCore3`), is a finite, explicitly
+The reference core of §6, `Q̃₄ = 𝓛₄(A₅ + A₅'/a₅)` and `Q̃₃ = 𝓛₃ Q̃₄`
+(`Erdos320.QrefCore4`, `Erdos320.QrefCore3`, with `Bref 5 = A₅'/a₅`), is a
+finite, explicitly
 computable rational function of the iterated exponentials `E₁(u) = eᵘ`,
 `E₂(u) = e^{E₁}`, `E₃(u) = e^{E₂}`.  This file records the exact closed forms
 of `Q̃₄`, its first and second derivatives, and `Q̃₃`, as consumed by the
 interval certificates of `sec:certificates`.
 
-Every object is a Laurent polynomial in `E₁, E₂, E₃, u` with common denominator
-`E₁²E₂²E₃`; the derivations `E₁' = E₁`, `E₂' = E₁E₂`, `E₃' = E₁E₂E₃` are the
-manuscript's eq. `laurent-derivative`.  The closed forms are proved here
+Every object is a Laurent polynomial in `E₁, E₂, E₃, u`; `Q̃₄` and its two
+derivatives are presented over the common denominator `E₁²E₂²E₃`, while
+`Q̃₃ = Q̃₄'/E₁` carries one extra `E₁` (denominator `E₁³E₂²E₃`).  The
+derivations `E₁' = E₁`, `E₂' = E₁E₂`, `E₃' = E₁E₂E₃` are the manuscript's
+eq. `laurent-derivative`.  The closed forms are proved here
 directly from Mathlib's `HasDerivAt` calculus (not via the `LaurentComb`
 symbolic layer), so the numerator polynomials appear literally.
 -/

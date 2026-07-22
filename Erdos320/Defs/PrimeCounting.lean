@@ -39,8 +39,7 @@ noncomputable def chebyshevTheta (x : ℝ) : ℝ :=
 sum `log p` over primes `p ≤ ⌊x⌋₊`.  The only nominal difference is that the
 project's index set `Finset.Iic ⌊x⌋₊` includes `0` where Mathlib's `Finset.Ioc 0
 ⌊x⌋₊` does not, but the prime filter drops `0` on both sides, so the sums are
-equal.  This bridge lets the two Chebyshev bounds below be inherited from
-Mathlib. -/
+equal.  This bridge lets downstream files inherit Mathlib's Chebyshev bounds. -/
 theorem chebyshevTheta_eq_theta (x : ℝ) : chebyshevTheta x = Chebyshev.theta x := by
   rw [chebyshevTheta, Chebyshev.theta]
   refine Finset.sum_congr ?_ (fun _ _ => rfl)
