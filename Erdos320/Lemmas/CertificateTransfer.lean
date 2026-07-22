@@ -425,8 +425,9 @@ theorem cert_E_three_eq (v : ℝ) :
     show (2 : ℕ) = 1 + 1 from rfl, E_succ,
     show (1 : ℕ) = 0 + 1 from rfl, E_succ, E_zero]
 
-/-- For `ξ ≥ 15` (comfortably past `e`, so all three nested logs are
-positive), `E₃ = exp∘exp∘exp` inverts `log₃` from the left. -/
+/-- For `ξ ≥ 15` (well past `e`, so `log ξ > 1` and hence
+`log₂ ξ = log(log ξ) > 0`), `E₃ = exp∘exp∘exp` inverts `log₃` from the
+left. -/
 theorem cert_E_three_iteratedLog {ξ : ℝ} (hξ : (15 : ℝ) ≤ ξ) :
     E 3 (iteratedLog 3 ξ) = ξ := by
   have hξ0 : (0 : ℝ) < ξ := by linarith

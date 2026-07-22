@@ -24,7 +24,8 @@ we have `log p ≤ log b`, hence
 ```
 so `#primes in (a,b] ≥ (ϑ(b) − ϑ(a)) / log b`.  Bounding `ϑ(b)` below and
 `ϑ(a)` above by Dusart (both endpoints `≥ 89 967 803`) turns the right-hand side
-into a computable quantity.
+into the computable per-shell lower bound the verifier uses
+(eq. `theta-prime-count`).
 
 ## Interface for the Phase-D assembly
 
@@ -38,10 +39,10 @@ into a computable quantity.
 * `dusart_theta_lower_upper` — the two-sided Dusart enclosure at a point,
   `x·(1 − C/log x) ≤ ϑ(x) ≤ x·(1 + C/log x)` with `C = 0.006788` (uses
   `dusart_theta_approx`);
-* `shellPrimes_card_lower_dusart` — the combined convenience: with rational
-  lower bounds `logbLo ≤ log(N/m)`, `logaLo ≤ log(N/(m+1))` and a rational upper
-  bound `Lb ≥ log(N/m)`, it yields a fully rational lower bound on `card`
-  (the form Phase D consumes per shell).
+* `shellPrimes_card_lower_dusart` — the combined convenience (the verifier's
+  eq. `theta-prime-count`): with rational lower bounds `logbLo ≤ log(N/m)`,
+  `logaLo ≤ log(N/(m+1))` and a rational upper bound `Lb ≥ log(N/m)`, it yields a
+  fully rational lower bound on `card` (the form Phase D consumes per shell).
 -/
 
 namespace Erdos320
@@ -192,8 +193,10 @@ endpoints `N/m, N/(m+1) ≥ 89 967 803`, and given rational *lower* bounds
     ≤ (shellPrimes N m).card,     C = 0.006788.
 ```
 Every quantity on the left is rational in `N, m, logbLo, logaLo, Lb`, so Phase D
-obtains a rational lower bound on each shell's prime count.  Depends on
-`dusart_theta_approx`. -/
+obtains a rational lower bound on each shell's prime count.  This is the
+verifier's per-shell formula (eq. `theta-prime-count`), with the directed
+rational enclosures `logbLo`/`logaLo`/`Lb` standing in for the exact logs.
+Depends on `dusart_theta_approx`. -/
 theorem shellPrimes_card_lower_dusart {N m : ℕ} (hm : 1 ≤ m)
     (hb : (89967803 : ℝ) ≤ (N : ℝ) / m)
     (ha : (89967803 : ℝ) ≤ (N : ℝ) / (m + 1))

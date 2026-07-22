@@ -154,8 +154,9 @@ theorem low_sqrt_mul_log_le {y : ℝ} (hy : (4 * 10 ^ 6 : ℝ) ≤ y) :
   nlinarith [mul_le_mul_of_nonneg_left hlogs (by positivity : (0:ℝ) ≤ 2 * Real.sqrt y)]
 
 /-- Free cap transport downward: for `0 < Y ≤ X` and `c ≥ 0`,
-`min(c, X) ≤ (X/Y)·min(c, Y)` — the "the positive term dominates … since
-`(λ/Y_m⁺)c_m ≥ min(g_m, λ)`" step of the paper's lower estimate. -/
+`min(c, X) ≤ (X/Y)·min(c, Y)`.  Serves the paper's "lower shell count only for
+the positive capped term" step of the lower estimate: it moves the cap from the
+sharp denominator `Y = log(N/m)` up to `X` (eq. `explicit-collision`). -/
 theorem low_cap_transport_free {c Xv Y : ℝ} (hY : 0 < Y) (hYX : Y ≤ Xv)
     (hc : 0 ≤ c) : min c Xv ≤ Xv / Y * min c Y := by
   have hXv : 0 < Xv := lt_of_lt_of_le hY hYX

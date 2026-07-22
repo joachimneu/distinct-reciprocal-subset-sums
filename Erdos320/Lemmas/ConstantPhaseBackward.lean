@@ -11,7 +11,8 @@ buffer `U⁺ = E₃⁻¹([0.999 w₋, 1.001 w₊]) ⊂ (1,2)`, `0.999 w₋ ≥ 9
   `‖H̄₄ − C·Q₄*‖_U ≤ ‖ρ₄‖_{U⁺} + (1 + C)·exp(−w₋ / 110)`.
 
 The proof follows the paper: the terminal input is the iteration tail
-`|H̄_R/J_R − Φ| ≤ C₀ q_R` of `prop:phase` (`abs_Hbar_div_J_sub_phasePhi_le`),
+`|H̄_R/J_R − Φ| ≤ C₀ q_R` of `lem:iteration-endpoint-matching`
+(`abs_Hbar_div_J_sub_phasePhi_le`),
 which under `Φ ≡ C` bounds `H̄_R − C·Q_R*` at an arbitrarily high depth `R`;
 the backward stability estimate (`lem:backward-stability`,
 `backward_stability`) then transports this bound down one exponential depth

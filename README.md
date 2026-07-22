@@ -3,7 +3,7 @@
 A **Lean 4 + Mathlib** effort to **machine-check a manuscript on Erdős Problem
 #320** — *the asymptotic number of distinct reciprocal subset sums*. The deliverable is checked Lean
 — the manuscript's **Theorem 1.1 is fully machine-checked**
-(`Erdos320/Main.lean`, `#print axioms`-auditable against exactly four axioms, documented in `Erdos320/Assumptions.lean`, capturing earlier results from the literature that are re-used in the proof).
+(`Erdos320/Main.lean`, `#print axioms`-auditable against exactly four axioms, documented in `Erdos320/Assumptions.lean`, capturing the proof's external inputs — results re-used from the literature together with finite computational certificates).
 
 **Use of AI:** The computational certificates in `ComputationalCertificates` were produced by GPT 5.6 Sol. The Lean proof in `Erdos320` was produced by Fable 5, based on a paper draft produced by GPT 5.6 Sol. We have carefully verified/curated the computational certificates, as well as the trusted core of the Lean proof (`Erdos320/Main.lean`, `Erdos320/Assumptions.lean` — no `sorry`, `axiom`, etc., elsewhere in the code base).
 
@@ -59,7 +59,7 @@ README that connects its files to the statements in the manuscript:
 
 2. **[`ComputationalCertificates/`](ComputationalCertificates/) — the finite
    computations backing the axioms.** The artifacts that justify the
-   formalization's finite-input axiom.
+   formalization's finite-input axioms.
    See **[`ComputationalCertificates/README.md`](ComputationalCertificates/README.md)**.
 
 Thus, `Erdos320/`

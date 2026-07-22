@@ -20,8 +20,8 @@ This file provides:
 
 * **Explicit-rational enclosures** of `log ξ`, `log (log ξ)` and `log₃ ξ` on the
   full high window `WH = [8·10²⁶, 1.3·10²⁸]` (`phaseEnclosure_WH`) and the sharp
-  window `H46 = [1.2004·10²⁸, 1.2009·10²⁸]` around the right endpoint
-  `1.001·x(46)` of the high curvature window (`x(46) = N₁·46/log N₁`)
+  window `H46 = [1.2004·10²⁸, 1.2009·10²⁸]` bracketing the right endpoint
+  `1.001·x(46)` of the top high chord window (`f = 46`, `x(46) = N₁·46/log N₁`)
   (`phaseEnclosure_H46`), together with their `E`-form restatements
   (`phaseEnclosure_E_WH`, `phaseEnclosure_E_H46`).
 
@@ -190,9 +190,10 @@ theorem phaseEnclosure_E_WH {ξ : ℝ} (h1 : (8e26 : ℝ) ≤ ξ) (h2 : ξ ≤ 1
 
 /-! ## `exp`-of-rational anchors for the sharp window `H46`
 
-The tight window around the right endpoint `1.001·x(46)` of the high curvature
-window (`x(46) = N₁·46/log N₁`), needed by a downstream curvature certificate.
-Same anchor pattern as above. -/
+The tight window bracketing the right endpoint `1.001·x(46)` of the top high
+chord window (`f = 46`, `x(46) = N₁·46/log N₁`), where the normalized slope of
+the core profile attains its minimum; consumed by the slope/curvature
+certificate `highDataCert`.  Same anchor pattern as above. -/
 
 set_option maxHeartbeats 800000 in
 /-- `exp 64.6549 ≤ 1.2004·10²⁸` (so `log ξ ≥ 64.6549` on `H46`). -/
@@ -298,9 +299,9 @@ theorem expH46_il3_hi_anchor : (4.169074 : ℝ) ≤ Real.exp (1.427696 : ℝ) :=
     _ ≤ Real.exp 1 ^ 1 * Real.exp (0.427696 : ℝ) :=
         mul_le_mul he1 hef (by norm_num) (by positivity)
 
-/-- **Sharp-window enclosure** `H46 = [1.2004·10²⁸, 1.2009·10²⁸]` around the
-right endpoint `1.001·x(46)` of the high curvature window
-(`x(46) = N₁·46/log N₁`):
+/-- **Sharp-window enclosure** `H46 = [1.2004·10²⁸, 1.2009·10²⁸]` bracketing the
+right endpoint `1.001·x(46)` of the top high chord window
+(`f = 46`, `x(46) = N₁·46/log N₁`):
 `log ξ ∈ [64.6549, 64.6555]`, `log (log ξ) ∈ [4.169063, 4.169074]`, and
 `log₃ ξ ∈ [1.427689, 1.427696]`.  All bounds are verified outer bounds. -/
 theorem phaseEnclosure_H46 {ξ : ℝ} (h1 : (1.2004e28 : ℝ) ≤ ξ)

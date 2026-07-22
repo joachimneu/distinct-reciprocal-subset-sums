@@ -56,7 +56,7 @@ Paper vs. Lean:
   (eq. `min-Kr`) `(1 − C₂q_r(1) − C₂E_{r-2}(1)²/E_{r-1}(1))` with the super-exponential
   term absorbed into `q_r(1)` via `E_sq_ratio_le_q_one`.  The base depth is
   chosen by the Archimedean property from `q_one_tendsto_zero` (the paper's
-  "from any sufficiently large fixed base depth").
+  "for any sufficiently large fixed base depth").
 * The one-step endpoint bound (`Knorm_endpoint_step`) is
   `s_{r+1} ≤ 6M + K + 7ε_rλ_r` — the paper's eq. `scalar-endpoint-bound`
   `s_{r+1} ≤ C₁(1 + M + ε_r λ_r)` with explicit constants.  It carries no
@@ -75,7 +75,7 @@ open MeasureTheory
 /-- The endpoint gaps vanish: `q r 1 → 0` as `r → ∞` (geometric decay
 `q_{r+1}(1) ≤ q_r(1)/2` via `q_succ_le_half`).  This is what lets the
 positivity argument pick a base depth with prescribed smallness
-(the paper's "from any sufficiently large fixed base depth"). -/
+(the paper's "for any sufficiently large fixed base depth"). -/
 theorem q_one_tendsto_zero :
     Filter.Tendsto (fun r : ℕ => q r 1) Filter.atTop (nhds 0) := by
   have hgeom : Filter.Tendsto (fun k : ℕ => (1 / 2 : ℝ) ^ k * q 4 1)
@@ -495,8 +495,7 @@ theorem iterationLimit_endpoint (d : IterationData)
     exact (d.Knorm_endpoint hr (by omega)).symm
   exact tendsto_nhds_unique (hshift.congr' hcongr) he
 
-/-- Pointwise monotonicity of `Y` in the depth (the paper's "the minima of
-the increasing `Y_r` are nondecreasing from one scale to the next"):
+/-- The paper's "pointwise depth monotonicity" of `Y`:
 `Y_r(u) ≤ Y_{r+1}(u)` on `[1, e]`, since
 `Y_{r+1}(u) ≥ Y_{r+1}(1) = Y_r(e) ≥ Y_r(u)`. -/
 theorem Y_le_Y_succ (d : IterationData) {r : ℕ} (hr : d.r₀ ≤ r) {u : ℝ}

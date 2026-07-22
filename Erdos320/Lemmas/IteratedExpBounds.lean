@@ -62,9 +62,8 @@ theorem two_mul_le_exp {x : ℝ} (hx : 0 ≤ x) : 2 * x ≤ Real.exp x := by
   nlinarith [h, sq_nonneg (x - 1)]
 
 /-- `x² ≤ exp (x/2)` once `x ≥ 20` (from the degree-4 Taylor term
-`(x/2)⁴/24 = x⁴/384 ≥ x²`, valid as soon as `x² ≥ 384`).  The hypothesis
-`20 ≤ x` is far weaker than needed at every use site: there `x = E j u`
-exceeds `E₃(1) > 3.8·10⁶`. -/
+`(x/2)⁴/24 = x⁴/384 ≥ x²`, valid as soon as `x² ≥ 384`).  Applied both to
+large iterates `x = E j u` and to double-logarithms `x = log₂ X`. -/
 theorem sq_le_exp_half {x : ℝ} (hx : 20 ≤ x) : x ^ 2 ≤ Real.exp (x / 2) := by
   have hx0 : (0 : ℝ) ≤ x / 2 := by linarith
   have h := pow_div_factorial_le_exp hx0 4

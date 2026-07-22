@@ -15,7 +15,7 @@ interval certificates of `sec:certificates`.
 Every object is a Laurent polynomial in `E₁, E₂, E₃, u`; `Q̃₄` and its two
 derivatives are presented over the common denominator `E₁²E₂²E₃`, while
 `Q̃₃ = Q̃₄'/E₁` carries one extra `E₁` (denominator `E₁³E₂²E₃`).  The
-derivations `E₁' = E₁`, `E₂' = E₁E₂`, `E₃' = E₁E₂E₃` are the manuscript's
+derivatives `E₁' = E₁`, `E₂' = E₁E₂`, `E₃' = E₁E₂E₃` are the manuscript's
 eq. `laurent-derivative`.  The closed forms are proved here
 directly from Mathlib's `HasDerivAt` calculus (not via the `LaurentComb`
 symbolic layer), so the numerator polynomials appear literally.

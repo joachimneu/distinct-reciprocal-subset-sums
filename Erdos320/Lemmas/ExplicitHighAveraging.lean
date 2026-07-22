@@ -2502,7 +2502,7 @@ set_option maxHeartbeats 1000000 in
 `cor:explicit-high-rho`): `|ρ(x)| < 10·(log x)²/x` for `x ≥ 8·10²⁶`, via
 eq. `threshold-displacement` and `explicit_high_averaging` at
 `z = log m_*(e^x)`.  (The realized total is `< 2.5·(log x)²/x`; the paper's
-constant `10` leaves the same headroom.) -/
+constant `10` leaves ample headroom.) -/
 theorem high_rho_abs_lt {x : ℝ} (hx : (8e26:ℝ) ≤ x) :
     |rho x| < 10 * (Real.log x ^ 2 / x) := by
   have hx0 : (0:ℝ) < x := by linarith

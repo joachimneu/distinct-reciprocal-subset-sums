@@ -18,8 +18,8 @@ F(N₁) = (log N₁ / N₁)·log S(N₁) > 3.2411,   N₁ = ⌊e⁶⁵⌋
 ## The collision-multiplicity subtlety
 
 The certificate's collision multiplicity for shell `m` is
-`b_cert = ⌊log W_m / log r_m⌋` (`divisor_bound`), where `W_m = L_m·H_m` is the
-integer numerator span and `r_m = N₁/(m+1)`.  This is the *exact* maximal number
+`b_cert = ⌊log W_m / log r_m⌋`, where `W_m = L_m·H_m` is the integer numerator
+span and `r_m = N₁/(m+1)`.  This is the *exact* maximal number
 of shell primes dividing a nonzero numerator difference: `card ≤ log W/log r`
 and `card ∈ ℕ`, so `card ≤ ⌊log W/log r⌋`.
 

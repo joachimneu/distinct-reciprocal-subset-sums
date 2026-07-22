@@ -69,7 +69,7 @@ theorem main_E_iteratedLog_cancel {j : ℕ} {x : ℝ}
 
 /-- Partial cancellation: for `k ≤ j`, re-exponentiating the deep iterate
 `log_j x` back up `j - k` times recovers the shallow iterate `log_k x`,
-provided the iterates strictly between stay positive. -/
+provided the iterates at depths `k ≤ m < j` stay positive. -/
 theorem main_iteratedLog_sub_cancel {j k : ℕ} {x : ℝ} (hkj : k ≤ j)
     (hpos : ∀ m, k ≤ m → m < j → 0 < iteratedLog m x) :
     E (j - k) (iteratedLog j x) = iteratedLog k x := by

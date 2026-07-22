@@ -310,8 +310,9 @@ theorem Knorm_transport (d : IterationData) {r : ℕ} (hr : d.r₀ ≤ r) {u : �
 
 /-! ## Sup recursion (deliverable 3) -/
 
-/-- **Sup recursion** (paper: `‖K_{r+1}‖_∞ ≤ ‖K_r‖_∞ + C₀ q_r(1)`, first
-display after eq. `forcing-localization`), with the explicit constant
+/-- **Sup recursion** (paper: `‖K_{r+1}‖_∞ ≤ ‖K_r‖_∞ + C₀ q_r(1)`, the display
+opening the closing-estimates stage, from the subprobability identity and
+eq. `forcing-localization`), with the explicit constant
 `C₀ = d.K`: from a uniform bound `M` at depth `r`,
 `|K_{r+1}(u)| ≤ M + K·q_r(1)` on all of `[1, e]`.  Subprobability of the
 transport measure (`mass_le`) plus the forcing bound (`forcing_le`). -/

@@ -57,11 +57,11 @@ Paper-vs-Lean notes:
   values themselves are still
   controlled by the value-level bounds.
 * Where the paper records an integer table for `∂^k(Q₄^{[7]} − Q̃₄)`, `U₄,₇`,
-  `V₄,₇` (eq. `first-reference-bound`), this development runs the generic
+  `V₄,₇` (tab. `derivative-bounds`), this development runs the generic
   size induction at `R = 7` instead; the resulting constants are (much)
-  larger than the paper's sharp `1299·E₃¹⁰/E₄ + 2758·E₄¹⁵/E₅` but still clear
-  the `exp(−3.7·10⁶)` margin with room to spare, so the sharp table is not
-  load-bearing for eq. `R7-tail`.
+  larger than the paper's sharp `1299·E₃¹⁰/E₄ + 2758·E₄¹⁵/E₅`
+  (eq. `first-reference-bound`) but still clear the `exp(−3.7·10⁶)` margin
+  with room to spare, so the sharp table is not load-bearing for eq. `R7-tail`.
 -/
 
 namespace Erdos320
@@ -753,8 +753,8 @@ theorem abs_evalComb_derivIter_DeltaComb_five_seven_le {m : ℕ} (hm : m ≤ 2)
     _ = Real.exp (-(E 3 u) / 2) := by ring
 
 /-- The increment `Δ₄,₇` and its first two derivatives are below a quarter
-of the eq. `R7-tail` target (`Δ₄,₇ = 𝓛₄ Δ₅,₇`; paper table row `U₄,₇`,
-`V₄,₇` of eq. `first-reference-bound`, with the generic constants). -/
+of the eq. `R7-tail` target (`Δ₄,₇ = 𝓛₄ Δ₅,₇`; paper table rows `U₄,₇`,
+`V₄,₇` of tab. `derivative-bounds`, with the generic constants). -/
 theorem abs_evalComb_derivIter_DeltaComb_four_seven_le {m : ℕ} (hm : m ≤ 2)
     {u : ℝ} (hu : 1 ≤ u) :
     |evalComb (derivComb^[m] (DeltaComb 4 7)) u|
@@ -1474,8 +1474,8 @@ theorem evalComb_derivIter_Q47_correction (m : ℕ) {u : ℝ} (hu : 0 < u) :
   rw [derivComb_iterate_add, evalComb_add] at h
   exact h
 
-/-! ### Size bounds for the correction (paper's table,
-eq. `first-reference-bound`, with generic constants) -/
+/-! ### Size bounds for the correction (paper's tab. `derivative-bounds`,
+row `Q₄^{[7]} − Q̃₄`, with generic constants) -/
 
 private theorem BrefComb_five_sizeBound : CombSizeBound 4 12 12 (BrefComb 5) :=
   ((AComb_sizeBound (by norm_num : 2 ≤ 5)).mono_t

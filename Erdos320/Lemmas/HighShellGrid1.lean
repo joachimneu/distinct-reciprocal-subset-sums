@@ -13,9 +13,11 @@ Each invokes the reusable lower bound `shell_contribution_ge_tight`
 `Pₘ·(ℓ − pen) ≤ ∑_{p ∈ shellPrimes highN m} log σ(p, m)`, where `Pₘ` is the tight
 Dusart prime-count floor, `ℓ` a `log(sL)` lower bound, `pen` the `b`-collision
 penalty (`eq:high-collision-bound`), and `sL` a BGMS lower bound on `S m`. The
-literals are discharged in place by `norm_num`/`native_decide` with the
-`exp`-comparison log bound `log_ge_of` for `ℓ` (`pen = 0`, so no penalty bound is
-needed). The eight grid files together cover the 154-shell ledger.
+literals are discharged in place by `norm_num`/`native_decide`; the `ℓ` bound
+comes from the tabulated rational `logNat_lower` on the small shells (`m ≤ 7`)
+and from the `exp`-comparison bound `log_ge_of` on the rest (`pen = 0`, so no
+penalty bound is needed). The eight grid files together cover the 154-shell
+ledger.
 -/
 
 namespace Erdos320
