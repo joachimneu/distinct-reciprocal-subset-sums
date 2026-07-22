@@ -16,7 +16,7 @@ names in the TeX source; certificate programs are repo-tracked under
 * `dusart_theta_k3` — Dusart's explicit Chebyshev `ϑ` bound (Thm 4.2, `k = 3`);
 * `bgmsSTable` — the BGMS exact values `S(0),…,S(83)`.
 
-Not axioms — proved in `Erdos320/Lemmas/`, do not re-axiomatize: the high
+Not axioms — proved in `Erdos320/Lemmas/`: the high
 finite input `F(⌊e⁶⁵⌋) > 3.2411` (`comp:high`, `highFiniteInput`) and the six
 directed-interval certificate lemmas.
 -/
@@ -67,7 +67,7 @@ axiom dusart_theta_k3 (t : ℝ) (ht : (89967803 : ℝ) ≤ t) :
 
 /-! Source: P. Dusart, *Explicit estimates of some functions over primes*, The
 Ramanujan Journal 45 (2018), 227–251, DOI 10.1007/s11139-016-9839-4
-(`\cite{Dusart}`), Theorem 4.2, the `k = 3` row.
+(`\cite{Dusart}`), Theorem 4.2, the `k = 3, n_k = 1` column.
 -/
 
 /-! ## `bgmsSTable` — `S m = bgmsTable.getD m 0` for `m ≤ 83`

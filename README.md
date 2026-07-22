@@ -5,7 +5,7 @@ A **Lean 4 + Mathlib** effort to **machine-check a manuscript on Erdős Problem
 — the manuscript's **Theorem 1.1 is fully machine-checked**
 (`Erdos320/Main.lean`, `#print axioms`-auditable against exactly four axioms, documented in `Erdos320/Assumptions.lean`, capturing earlier results from the literature that are re-used in the proof).
 
-**Use of AI:** The computational certificates in `ComputationalCertificates` were produced by GPT 5.6 Sol. The Lean proof in `Erdos320` was produced by Fable 5. We have carefully verified/curated the computational certificates, as well as the trusted core of the Lean proof (`Erdos320/Main.lean`, `Erdos320/Assumptions.lean` — no `sorry`, `axiom`, etc., elsewhere in the code base).
+**Use of AI:** The computational certificates in `ComputationalCertificates` were produced by GPT 5.6 Sol. The Lean proof in `Erdos320` was produced by Fable 5, based on a paper draft produced by GPT 5.6 Sol. We have carefully verified/curated the computational certificates, as well as the trusted core of the Lean proof (`Erdos320/Main.lean`, `Erdos320/Assumptions.lean` — no `sorry`, `axiom`, etc., elsewhere in the code base).
 
 ## The problem
 
@@ -54,16 +54,17 @@ README that connects its files to the statements in the manuscript:
    The machine-checked development of Theorem 1.1. Start at
    [`Erdos320/Main.lean`](Erdos320/Main.lean), the trusted core that restates
    Theorem 1.1 with every object pinned to its definition and all proofs
-   delegated to `Erdos320/Lemmas/`. The full paper ↔ Lean map and the
+   delegated to `Erdos320/Lemmas/`. The full paper ↔ Lean map and the proof
    architecture live in **[`Erdos320/README.md`](Erdos320/README.md)**.
 
 2. **[`ComputationalCertificates/`](ComputationalCertificates/) — the finite
    computations backing the axioms.** The artifacts that justify the
-   formalization's finite-input axioms. See **[`ComputationalCertificates/README.md`](ComputationalCertificates/README.md)**.
+   formalization's finite-input axiom.
+   See **[`ComputationalCertificates/README.md`](ComputationalCertificates/README.md)**.
 
 Thus, `Erdos320/`
 proves everything downstream of a small, explicit set of axioms, and
-`ComputationalCertificates/` holds the finite computations those axioms stand on.
+`ComputationalCertificates/` holds any finite computations those axioms stand on.
 
 ## Build
 

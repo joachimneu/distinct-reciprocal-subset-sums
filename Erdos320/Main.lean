@@ -3,7 +3,7 @@ import Erdos320.Lemmas.MainTheorem
 /-!
 # Theorem 1.1 — the trusted core (read this file first)
 
-This file is the **audit front page** of the `Erdos320` formalization. Its job
+This file is the core of the `Erdos320` formalization. Its job
 is that a reader can, *in one glance and without trusting any proof*, convince
 themselves of two things:
 
@@ -16,8 +16,7 @@ themselves of two things:
 To keep it readable, **no proofs live here**. Every theorem below is proved by
 a one-line invocation of a fully-proved theorem in `Erdos320/Lemmas/`
 (`Main.lean`, `MainTheorem.lean`). Lean checks that the statement restated here
-is definitionally the one proved there, so the delegation cannot hide a
-mismatch. For where each *paper* item is realized in the code, see
+is definitionally the one proved there. For where each *paper* item is realized in the code, see
 `Erdos320/README.md`.
 
 ## Paper Theorem 1.1 (`\label{thm:main}`)
@@ -43,9 +42,7 @@ mismatch. For where each *paper* item is realized in the code, see
 
 ## The objects in the statement
 
-The four central objects, with their exact Lean definitions (each pinned
-below by a `rfl`-checked `example`, so this documentation cannot drift from the
-real definitions):
+The four central objects, with their exact Lean definitions:
 
 * `S N = |𝓔_N|`, where `𝓔_N = { ∑_{n ∈ A} 1/n : A ⊆ {1,…,N} } ⊆ ℚ` is the set
   of distinct reciprocal subset sums (empty sum `0` included, so `S 0 = 1`).
@@ -69,11 +66,10 @@ together with an explicit (effective) error bound.
 
 namespace Erdos320
 
-/-! ## Definition recap (machine-checked)
+/-! ## Definition recap
 
 Each `example` below re-displays a statement object as its fully-expanded
-definition and is closed by `rfl`. This is what makes the recap above trustworthy
-rather than mere prose. -/
+definition and is closed by `rfl`. -/
 
 /-- `S N` is the cardinality of the set of reciprocal subset sums. -/
 example (N : ℕ) :

@@ -20,7 +20,7 @@ assumed:
 - **[`Assumptions.lean`](Assumptions.lean)** contains the numerical values
   produced by the computational certificates, and results reused from the literature.
   It is the only file
-  permitted to declare an `axiom`.
+  permitted to declare each of these assumptions as an `axiom`.
 
 ## Paper ↔ Lean map
 
