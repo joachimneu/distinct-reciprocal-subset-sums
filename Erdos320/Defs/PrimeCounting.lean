@@ -14,7 +14,7 @@ prime-distribution inputs are stated (see `Erdos320/Assumptions.lean`):
 * eq. `theta-explicit` (Dusart): `|ϑ(t) − t| ≤ 0.006788·t/log t` for
   `t ≥ 89 967 803` — the *proved theorem* `dusart_theta_approx`
   (`Lemmas/ShellCountDusart.lean`), derived from the axiom `dusart_theta_k3`
-  (Dusart 2018 Thm 4.2, `k = 3` row `|ϑ(t)−t| ≤ t/(log t)³`, `t ≥ 89 967 803`).
+  (Dusart 2018 Thm 4.2, `k = 3` row `|ϑ(t)−t| < t/(log t)³`, `t ≥ 89 967 803`).
 
 `π` reuses Mathlib's `Nat.primeCounting`; `Li(x) = ∫_2^x dt/log t` and
 `ϑ(x) = ∑_{p ≤ x} log p` follow the manuscript's conventions (set out just

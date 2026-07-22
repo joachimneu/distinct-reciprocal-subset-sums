@@ -14,7 +14,7 @@ The manuscript (§8, eq. `theta-explicit`) obtains these counts from Dusart's
 explicit Chebyshev estimate `|ϑ(t) − t| ≤ 0.006788·t/log t` for `t ≥ 89 967 803`.
 That form is the *proved theorem* `dusart_theta_approx` below, derived here from
 the axiom `dusart_theta_k3` (`Assumptions.lean`; Dusart 2018 Thm 4.2, the `k = 3`
-row `|ϑ(t)−t| ≤ t/(log t)³`, `t ≥ 89 967 803`) by the manuscript's own one-line
+row `|ϑ(t)−t| < t/(log t)³`, `t ≥ 89 967 803`) by the manuscript's own one-line
 step (`t ≥ 89 967 803 > e¹⁸ ⇒ log t ≥ 18 ⇒ 1/(log t)² ≤ 1/324 < 0.006788`).
 
 The elementary inequality behind the bound is: for primes `p` with `a < p ≤ b`
@@ -53,7 +53,7 @@ open Finset
 `|ϑ(t) − t| ≤ 0.006788·t/log t` for every `t ≥ 89 967 803` — the manuscript's
 eq. `theta-explicit` (§8), the form the `comp:high` shell/aggregate prime counts
 consume.  It is the paper's own "weaker consequence" of Dusart's `k = 3`
-estimate `|ϑ(t) − t| ≤ t/(log t)³` (`dusart_theta_k3`, `Assumptions.lean`): for
+estimate `|ϑ(t) − t| < t/(log t)³` (`dusart_theta_k3`, `Assumptions.lean`): for
 `t ≥ 89 967 803 > e¹⁸` one has `log t ≥ 18`, hence `1/(log t)² ≤ 1/324 < 0.006788`,
 so `t/(log t)³ ≤ 0.006788·t/log t`.  A proved theorem, **not** an axiom — its
 only external input is `dusart_theta_k3`. -/
@@ -79,7 +79,7 @@ theorem dusart_theta_approx (t : ℝ) (ht : (89967803 : ℝ) ≤ t) :
     have hnn : (0 : ℝ) ≤ 0.006788 * t / Real.log t - t / (Real.log t) ^ 3 := by
       rw [e1]; exact div_nonneg (mul_nonneg htpos.le hfac) (by positivity)
     linarith
-  exact le_trans (dusart_theta_k3 t ht) hstep
+  exact le_trans (dusart_theta_k3 t ht).le hstep
 
 /-! ## The `chebyshevTheta`→shell-sum bridge -/
 
