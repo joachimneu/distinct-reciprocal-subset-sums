@@ -26,8 +26,8 @@ Following the paper, with `N = ⌊e^X⌋`, `M = ⌊X³⌋`:
   `W_m = (log 4)m + √m·log m + log(1+log m)` dominating `log(L_m·H_m)`
   (paper: `b_m ≤ log(L_mH_m)/log(N/(m+1)) ≪ m/X`).
 * The bracket of eq. `collision-sum` is transported to the capped value
-  `a_m = min(g(m), X)` (`avgLow_capped_deficit_transfer`; paper: "The bracket
-  in eq. `collision-sum` is at least `a_m − ℓ_m`").
+  `τ_m = min(g(m), X)` (`avgLow_capped_deficit_transfer`; paper: "The bracket
+  in eq. `collision-sum` is at least `τ_m − ℓ_m`").
 * The FKS shell-count estimates (`primeInterval_lower/upper`) convert the
   prime count `P_m` into the weight `1/(m(m+1))`, the lower count multiplying
   the positive capped term and the upper count multiplying the loss `ℓ_m`
@@ -512,7 +512,7 @@ theorem avgLow_sub_log_exp_mono {β u v : ℝ} (hβ : 0 ≤ β) (huv : u ≤ v) 
   linarith
 
 /-- **Capped bracket transfer** (paper, proof of `prop:averaging-relation`:
-"The bracket in eq. `collision-sum` is at least `a_m − ℓ_m`"): for `P > 0`,
+"The bracket in eq. `collision-sum` is at least `τ_m − ℓ_m`"): for `P > 0`,
 `S ≥ 1`, `b ≥ 0`,
 ```
 min(log S, Y) − log(1 + b·e^{min(log S, Y)}/P) ≤ log S − log(1 + b(S−1)/P).
@@ -546,7 +546,7 @@ theorem avgLow_capped_deficit_transfer {P bR S Y : ℝ} (hP : 0 < P)
     linarith
 
 /-- The per-shell collision loss
-`ℓ_m = log(1 + b_m·e^{a_m}/P_m)` with `a_m = min(g(m), X)` — the paper's
+`ℓ_m = log(1 + b_m·e^{τ_m}/P_m)` with `τ_m = min(g(m), X)` — the paper's
 `ℓ_m` in the proof of `prop:averaging-relation`. -/
 noncomputable def avgLow_shellDeficit (X : ℝ) (m : ℕ) : ℝ :=
   Real.log (1 + (avgLow_bChoice X m : ℝ) * Real.exp (min (g m) X)
@@ -603,7 +603,7 @@ theorem avgLow_shell_collision {X : ℝ} (hX : (10 : ℝ) ^ 7 ≤ X) {m : ℕ}
 /-- **Small-`m` regime** (paper: "If `m ≤ X/(4log2)`, the logarithmic loss in
 eq. `collision-sum` is `O(e^{−X/2})`"): for `m·log 2 ≤ X/4` the whole shell
 loss is at most `4·e^{X/4}` *before* normalization, since `b_m ≤ 4` and
-`e^{a_m} ≤ S(m) ≤ 2^m ≤ e^{X/4}`. -/
+`e^{τ_m} ≤ S(m) ≤ 2^m ≤ e^{X/4}`. -/
 theorem avgLow_deficit_small {X : ℝ} (hX : (10 : ℝ) ^ 7 ≤ X) {m : ℕ}
     (hm1 : 1 ≤ m) (hmM : m ≤ shellCutoff X)
     (hreg : (m : ℝ) * Real.log 2 ≤ X / 4) :
@@ -748,7 +748,7 @@ theorem avgLow_deficit_le_large {X : ℝ} (hX : (10 : ℝ) ^ 7 ≤ X) {m : ℕ}
             Real.log_le_log (by norm_num) he3
         _ = 3 := Real.log_exp 3
     linarith
-  -- `log t ≤ 4 + 3log(m+1)` for `t = b·e^{a_m}/P`
+  -- `log t ≤ 4 + 3log(m+1)` for `t = b·e^{τ_m}/P`
   have ht0 : (0 : ℝ) < (avgLow_bChoice X m : ℝ) * Real.exp (min (g m) X)
       / ((shellPrimes ⌊Real.exp X⌋₊ m).card : ℝ) := by positivity
   have hlogt : Real.log ((avgLow_bChoice X m : ℝ) * Real.exp (min (g m) X)

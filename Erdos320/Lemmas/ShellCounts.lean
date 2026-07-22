@@ -211,9 +211,12 @@ theorem fksError_le_of_log_ge {t : ℝ} (ht : 0 ≤ t)
 /-- **Explicit huge-range decay of the FKS error.**  Once `log t ≥ 9·10⁶`
 (the certificate lemmas have `log Q > X − 34 ≥ 9 699 966`, see
 `lem:explicit-low-averaging`), the FKS error is utterly negligible:
-`Err_π(t) ≤ t/10¹⁰⁰`.  This backs the manuscript's "relative error … less than
-`10⁻¹¹⁴⁰`" remark for eq. `explicit-shell-count` (we certify the weaker but
-amply sufficient `10⁻¹⁰⁰`). -/
+`Err_π(t) ≤ t/10¹⁰⁰`.  This backs the manuscript's remark for
+eq. `explicit-shell-count` that "`Err_π(t)/t` is decreasing throughout this
+range, and at every relevant shell endpoint `Err_π(t)/t ≤ 9.871·10⁻¹¹⁴³ <
+10⁻¹¹⁴⁰`" (we certify the weaker but amply sufficient `10⁻¹⁰⁰` threshold
+bound at every `t` in range, so we need neither the monotonicity claim nor
+the endpoint values). -/
 theorem fksError_le_tiny {t : ℝ} (ht : 0 ≤ t)
     (hlog : (9 * 10 ^ 6 : ℝ) ≤ Real.log t) :
     fksError t ≤ t / 10 ^ 100 := by

@@ -30,12 +30,12 @@ prime-interval count (eq. `explicit-shell-count`, via `primeInterval_upper` /
 `primeInterval_lower` with the astronomically small error
 `fksError_le_tiny`) and the cap comparison between `min(g(m), log(N/m))` and
 `min(g(m), X)` give the upper side, split at `T = ⌊(X−36)/log 2⌋` into the
-`a_m ≤ m log 2` head (paper's `< 1.042·10⁻⁵`; here `≤ 1.041·10⁻⁵`) and the
-`a_m ≤ X` tail (paper's `< 1.287·10⁻⁶`; here `≤ 1.30·10⁻⁶`).  The lower side
+`τ_m ≤ m log 2` head (paper's `< 1.042·10⁻⁵`; here `≤ 1.041·10⁻⁵`) and the
+`τ_m ≤ X` tail (paper's `< 1.287·10⁻⁶`; here `≤ 1.30·10⁻⁶`).  The lower side
 uses the shellwise collision bound (`shell_collision_lower`) with the
-multiplicity `b_m` of eq. `explicit-bm`, the `a*_m = min(m log 2, X)` deficit
+multiplicity `b_m` of eq. `explicit-bm`, the `τ*_m = min(m log 2, X)` deficit
 transfer of eq. `explicit-collision`, and the split at `A = ⌊X/(2 log 2)⌋`
-(the paper's `T₊/2`): below `A` the deficit carries `e^{a*_m−X} ≤ e^{−X/2}`
+(the paper's `T₊/2`): below `A` the deficit carries `e^{τ*_m−X} ≤ e^{−X/2}`
 and is beyond negligible; above `A` an integral comparison bounds the total
 deficit by `7.7·10⁻⁶`.
 
@@ -77,7 +77,7 @@ shell is clamped (`g(m) ≤ m log 2 ≤ X − 36 ≤ log(N/(m+1))`). -/
 noncomputable def lowT (X : ℝ) : ℕ := ⌊(X - 36) / Real.log 2⌋₊
 
 /-- The lower-estimate split index, `A = ⌊X/(2 log 2)⌋` (the paper's
-`T₊/2`): for `m ≤ A` the collision deficit carries `e^{a*_m − X} ≤ e^{−X/2}`. -/
+`T₊/2`): for `m ≤ A` the collision deficit carries `e^{τ*_m − X} ≤ e^{−X/2}`. -/
 noncomputable def lowA (X : ℝ) : ℕ := ⌊X / (2 * Real.log 2)⌋₊
 
 /-- The collision multiplicity `b_m` of eq. `explicit-bm`: any integer at
@@ -167,7 +167,7 @@ theorem low_cap_transport_free {c Xv Y : ℝ} (hY : 0 < Y) (hYX : Y ≤ Xv)
   · rw [min_eq_right h.le, div_mul_cancel₀ _ hY.ne']
     exact min_le_right c Xv
 
-/-- The `a*_m = min(m log 2, X)` deficit transfer of eq. `explicit-collision`:
+/-- The `τ*_m = min(m log 2, X)` deficit transfer of eq. `explicit-collision`:
 for `log S ≤ c₁` and `Y ≤ c₂`, the capped collision bound
 `min(log S, Y) − log(1 + b·e^{min c₁ c₂}/P)` is at most the exact one
 `log S − log(1 + b(S−1)/P)`, so capping `log S` at `Y` and replacing `S − 1`
@@ -1123,7 +1123,7 @@ theorem low_shell_prime_cast_lb {m p : ℕ}
   exact h2
 
 /-- The per-prime cap: on the `m`-th shell,
-`log σ_p(m) ≤ min(g(m), log(N/m))` (paper: `log σ_p(m) ≤ a_m` and
+`log σ_p(m) ≤ min(g(m), log(N/m))` (paper: `log σ_p(m) ≤ τ_m` and
 `σ_p(m) ≤ p ≤ N/m`). -/
 theorem low_shell_logSum_le_card_mul_cap (h1 : (9.7e6:ℝ) ≤ X)
     (h2 : X ≤ 1.07e7) {m : ℕ} (hm1 : 1 ≤ m) (hmM : m ≤ lowM X) :
@@ -2017,7 +2017,7 @@ theorem low_shell_collision (h1 : (9.7e6:ℝ) ≤ X) (h2 : X ≤ 1.07e7)
 
 set_option maxHeartbeats 1000000 in
 /-- Per-shell lower bound, regime `m ≤ A` (paper: "For `m ≤ T₊/2` the total
-is below `10⁻¹⁰⁰⁰`"): the collision deficit carries `e^{a*_m − X} ≤ e^{−X/2}`. -/
+is below `10⁻¹⁰⁰⁰`"): the collision deficit carries `e^{τ*_m − X} ≤ e^{−X/2}`. -/
 theorem low_shell_lower_regime_I (h1 : (9.7e6:ℝ) ≤ X) (h2 : X ≤ 1.07e7)
     {m : ℕ} (hm1 : 1 ≤ m) (hmA : m ≤ lowA X) :
     min (g m) X / ((m:ℝ) * ((m:ℝ) + 1))

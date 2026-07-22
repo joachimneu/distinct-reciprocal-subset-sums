@@ -39,9 +39,16 @@ functions" (`lem:backward-reference-convergence`) on top of
   `Q47-tail-majorant`, `R7-tail`): `abs_QrefLimit_four_sub_QrefCore4_le`
   and its first/second-derivative companions — the `‖Q₄^* − Q̃₄‖_{C²}`
   pieces of the paper's `< exp(−3.7·10⁶)` bound (eq. `R7-tail`) — plus the
-  depth-3 value companion `‖Q₃^* − Q̃₃‖_{C⁰}` (with no displayed
-  counterpart: the paper obtains its depth-3 estimates by applying `𝓛₃` to
-  the C² enclosure rather than from a separate convergence statement).
+  depth-3 value companion `‖Q₃^* − Q̃₃‖_{C⁰}`, matching the paper's
+  displayed C²-to-C¹ transfer (stated immediately after
+  `lem:backward-reference-convergence`): with `Δ = Q₄^* − Q̃₄` the paper
+  derives `Q₃^* − Q̃₃ = Δ'/E₁` and gets the sharper
+  `‖Q₃^* − Q̃₃‖_∞ < e⁻¹·exp(−3.7·10⁶)`; the Lean lemma proves the slightly
+  weaker (but sufficient) `exp(−3.7·10⁶)` bound via the same identity.
+  The paper's depth-3 derivative bound
+  `‖(Q₃^* − Q̃₃)'‖_∞ < 2e⁻¹·exp(−3.7·10⁶)` has no `u`-level counterpart
+  here: the development takes derivative control at the breakpoint
+  coordinate instead (`Erdos320.Lemmas.CertificateTransfer`).
 
 Paper-vs-Lean notes:
 
@@ -1800,7 +1807,12 @@ noncomputable def QrefLimit3 : ℝ → ℝ := fun u =>
   QrefLimitIterDeriv 1 4 u / a 3 u
 
 /-- **Eq. `R7-tail`, depth-3 value piece**:
-`|Q₃^*(u) − Q̃₃(u)| ≤ exp(−3.7·10⁶)` for `u ≥ 1`. -/
+`|Q₃^*(u) − Q̃₃(u)| ≤ exp(−3.7·10⁶)` for `u ≥ 1`.
+
+The paper's displayed C²-to-C¹ transfer (stated immediately after
+`lem:backward-reference-convergence`) gives the sharper
+`e⁻¹·exp(−3.7·10⁶)` from `a₃ = E₁ ≥ e`; the proof below only uses
+`1 ≤ a₃`, yielding the weaker (but sufficient) `exp(−3.7·10⁶)`. -/
 theorem abs_QrefLimit3_sub_QrefCore3_le {u : ℝ} (hu : 1 ≤ u) :
     |QrefLimit3 u - QrefCore3 u| ≤ Real.exp (-(3.7e6 : ℝ)) := by
   have hu0 : (0 : ℝ) < u := lt_of_lt_of_le one_pos hu

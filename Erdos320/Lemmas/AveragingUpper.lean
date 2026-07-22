@@ -150,7 +150,7 @@ theorem avg_shell_index_lt_prime {X : ℝ} (hX : (10 : ℝ) ^ 7 ≤ X) {m p : �
   exact_mod_cast h6
 
 /-- **Per-prime cap** (`prop:averaging-relation` proof:
-`log σ_p(m) ≤ min(g(m), log p) ≤ a_m`): on the `m`-th shell (`1 ≤ m ≤ M`,
+`log σ_p(m) ≤ min(g(m), log p) ≤ τ_m`): on the `m`-th shell (`1 ≤ m ≤ M`,
 `X ≥ 10⁷`), `log σ_p(m) ≤ min(g(m), X)`.  The `g(m)` branch is
 `σ_p(m) ≤ S(m)` (`sigma_le_S`, using `m < p`); the `X` branch is
 `σ_p(m) ≤ p` and `log p ≤ X − log m ≤ X` (`shell_prime_le_log`) — enlarging

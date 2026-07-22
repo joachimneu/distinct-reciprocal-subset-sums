@@ -57,10 +57,11 @@ Paper-vs-Lean notes:
   derivatives) under the hypothesis `k + m + 1 ≤ R`, which holds with room
   to spare in every use (`k ≤ R − 4`, `m ≤ 2`).
 * The increment identity `Qref_succ_sub_eval` requires `4 ≤ s` (through
-  `hasDerivAt_J_succ`, whose defect identity fails at `r = 3`), matching the
-  paper's "take `r ≥ 5`" remark; the hypothesis `4 ≤ R` in the paper's
-  statement is implied by `4 ≤ s ≤ R` and is therefore not a separate
-  hypothesis here.
+  `hasDerivAt_J_succ`, whose defect identity fails at `r = 3`); the paper's
+  "take `r ≥ 7`" starting-depth remark covers this with room to spare,
+  while `4 ≤ s` is the sharp threshold the Lean proof needs.  The
+  hypothesis `4 ≤ R` in the paper's statement is implied by `4 ≤ s ≤ R`
+  and is therefore not a separate hypothesis here.
 -/
 
 namespace Erdos320

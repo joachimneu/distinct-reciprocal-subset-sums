@@ -42,10 +42,14 @@ right-derivative form `hYder` of the recurrence:
 
 Paper vs. Lean:
 
-* The paper's positivity argument ("Fixing one base depth, we see that every
-  later `Y_r` is bounded below by the positive minimum at that depth.  The
-  absolute bound on `η_r` may therefore be rewritten as the relative bound
-  `|η_r| ≪ Y_r E_{r-2}²/E_{r-1}`") is realized through
+* The paper's positivity argument puts `θ_r = E_{r-2}(1)²/E_{r-1}(1)`,
+  notes that both series `Σ q_r(1)` and `Σ θ_r` converge
+  (`θ_r = T_r²e^{−T_r}` with `T_{r+1} = e^{T_r}` is summable), increases
+  the base depth to an `r₀` with `C₂(q_r(1) + θ_r) ≤ 1/2` for `r ≥ r₀` —
+  so every factor in eq. `min-Kr` is positive and the infinite product
+  `∏_{r≥r₀} (1 − C₂q_r(1) − C₂θ_r)` converges to a positive number — and
+  concludes `min K_r ≥ min K_{r₀}·∏(…) ≥ c₀ > 0`, whence uniform
+  convergence gives `inf_{[1,e]} Ψ > 0`.  In Lean this is realized through
   `IterationData.Y_le_Y_succ` (the paper's pointwise depth monotonicity
   `Y_{r+1}(u) ≥ Y_{r+1}(1) = Y_r(e) ≥ Y_r(u)`, from
   `Y_mono` + `Y_endpoint`), the fixed positive floor `y₀ = Y_{r₀}(1)`
@@ -53,10 +57,14 @@ Paper vs. Lean:
   `min K_{r+1} ≥ (1 − κ·q_r(1))·min K_r` with the explicit
   `κ = K/y₀ + 6` (`IterationData.Knorm_min_step`,
   `IterationData.Knorm_min_step_normalized`) — the paper's factor
-  (eq. `min-Kr`) `(1 − C₂q_r(1) − C₂E_{r-2}(1)²/E_{r-1}(1))` with the super-exponential
-  term absorbed into `q_r(1)` via `E_sq_ratio_le_q_one`.  The base depth is
-  chosen by the Archimedean property from `q_one_tendsto_zero` (the paper's
-  "for any sufficiently large fixed base depth").
+  (eq. `min-Kr`) `(1 − C₂q_r(1) − C₂θ_r)` with the super-exponential
+  `θ_r`-term absorbed into `q_r(1)` via `E_sq_ratio_le_q_one`.  The base
+  depth is chosen by the Archimedean property from `q_one_tendsto_zero`
+  (the paper's increase of the base depth `r₀`).  Proof-internally the
+  Lean argument differs from the paper's: instead of a convergent infinite
+  product it uses a single base depth plus a geometric loss budget,
+  bounding `min K` below by `μ/2` for the compactness minimum `μ` at that
+  depth — but it proves the same statement.
 * The one-step endpoint bound (`Knorm_endpoint_step`) is
   `s_{r+1} ≤ 6M + K + 7ε_rλ_r` — the paper's eq. `scalar-endpoint-bound`
   `s_{r+1} ≤ C₁(1 + M + ε_r λ_r)` with explicit constants.  It carries no
@@ -688,11 +696,12 @@ theorem Knorm_min_step_normalized (d : IterationData) {r : ℕ}
       (0 : ℝ) ≤ κ * q r 1 - d.K * q r 1 / d.Y d.r₀ 1 - 6 * q r 1),
     mul_nonneg (mul_nonneg hm0 hc0) hq0.le]
 
-/-- **Positivity of `Ψ`** (paper: "The product of these factors is positive.
-Thus `inf Ψ > 0`"): from a base depth `r₃ ≥ r₀` chosen (Archimedean, via
-`q_one_tendsto_zero`) so that `κ·2q_{r₃}(1) ≤ 1/2`, the minimum recursion
-keeps `K_{r₃+n} ≥ μ/2` for the compactness minimum `μ` of `K_{r₃}`, and the
-lower bound survives the limit. -/
+/-- **Positivity of `Ψ`** (paper: the infinite product
+`∏_{r≥r₀} (1 − C₂q_r(1) − C₂θ_r)` converges to a positive number, and
+uniform convergence gives `inf_{[1,e]} Ψ > 0`): from a base depth `r₃ ≥ r₀`
+chosen (Archimedean, via `q_one_tendsto_zero`) so that `κ·2q_{r₃}(1) ≤ 1/2`,
+the minimum recursion keeps `K_{r₃+n} ≥ μ/2` for the compactness minimum `μ`
+of `K_{r₃}`, and the lower bound survives the limit. -/
 theorem iterationLimit_pos (d : IterationData)
     (hYder : ∀ r, d.r₀ ≤ r → ∀ x ∈ Set.Ico (1 : ℝ) (Real.exp 1),
       HasDerivWithinAt (d.Y (r + 1)) (a r x * (d.Y r x + d.η r x))

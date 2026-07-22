@@ -1757,7 +1757,7 @@ theorem high_shell_collision (hX : (8e26:ℝ) ≤ X) {m : ℕ} (hm1 : 1 ≤ m)
 
 set_option maxHeartbeats 1000000 in
 /-- Per-shell lower bound, regime `m ≤ A`: the collision deficit carries
-`e^{a*_m − X} ≤ e^{−X/2}` and is bounded by `9X³e^{−X/2}`. -/
+`e^{τ*_m − X} ≤ e^{−X/2}` and is bounded by `9X³e^{−X/2}`. -/
 theorem high_shell_lower_regime_I (hX : (8e26:ℝ) ≤ X) {m : ℕ} (hm1 : 1 ≤ m)
     (hmA : m ≤ lowA X) :
     min (g m) X / ((m:ℝ) * ((m:ℝ) + 1))
