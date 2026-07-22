@@ -55,7 +55,7 @@ Paper-vs-Lean notes:
 * The paper's coefficient-norm invariant `‖·‖₁ ≤ 2R(2R²)^{t+k} ≤ (2R²)^R` is
   tracked here with exponent `k + m` (backward steps plus formal
   derivatives) under the hypothesis `k + m + 1 ≤ R`, which holds with room
-  to spare in every use (`k ≤ R − 5`, `m ≤ 2`).
+  to spare in every use (`k ≤ R − 4`, `m ≤ 2`).
 * The increment identity `Qref_succ_sub_eval` requires `4 ≤ s` (through
   `hasDerivAt_J_succ`, whose defect identity fails at `r = 3`), matching the
   paper's "take `r ≥ 5`" remark; the hypothesis `4 ≤ R` in the paper's

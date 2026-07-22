@@ -8,80 +8,24 @@ which holds the finite computations that back this development's finite-input
 axioms. See the [top-level `README.md`](../README.md) for the overall division
 and the problem statement.
 
-**Lean's kernel is the authority.** Nothing here is treated as a verified
-mathematical fact until Lean has checked it; "the paper says so" is a hypothesis
-to be discharged, not a citation that settles anything.
-
 ## Where to start
 
-- **[`Main.lean`](Main.lean) — the trusted core; read this first.** It restates
+`Main.lean` and `Assumptions.lean` are the two "read-me-to-trust-everything"
+files — `Main.lean` is the exact claim, `Assumptions.lean` is everything
+assumed:
+- **[`Main.lean`](Main.lean)** restates
   Theorem 1.1 in full, pins every object in the statement (`S(N)`, `log_j`,
   `h(N)`, `u_N`) to its definition with `rfl`-checked recap lemmas, and delegates
-  all proofs to `Lemmas/`. One file, one glance: it lets a reader confirm the
-  definitions are faithful and the statement proved is the right theorem without
-  reading any proof. It is deliberately kept stable and is not edited except on
-  explicit request.
-- **[`Assumptions.lean`](Assumptions.lean) — the trust boundary.** The only file
-  permitted to declare an `axiom` (see below).
-
-`Main.lean` and `Assumptions.lean` are the two "read-me-to-trust-everything"
-files: a human gains confidence in the whole mechanization by inspecting only
-these two — `Main.lean` is the exact claim, `Assumptions.lean` is everything
-assumed. Both are kept deliberately minimal.
-
-## Layout
-
-- **`Main.lean`** — the trusted core (statement restatements + one-line
-  invocations of `Lemmas/`; no proofs live here).
-- **`Defs/`** — the load-bearing definitions on top of Mathlib. The base module
-  `Defs/Basic.lean` defines `reciprocalSubsetSumSet (N) : Finset ℚ` (`= 𝓔_N`),
-  `S (N) : ℕ` (`= |𝓔_N|`), and the normalized count `F (N) : ℝ`, plus honestly
-  proven basics (`S 0 = 1`, `1 ≤ S N`, `Monotone S`). The rest of `Defs/` adds
-  the iterated logarithms, stopping depth `h(N)` / phase coordinate `u_N`, the
-  averaging profile `𝓑` and `H̄_r`/`ρ_r`, and the modular images `σ`.
-- **`Lemmas/`** — the proof: the analytic development plus the capstone theorems
-  in `Lemmas/Main.lean` and `Lemmas/MainTheorem.lean` that `Main.lean` invokes.
-- **`Assumptions.lean`** — the trust boundary (see below).
-
-`reciprocalSubsetSumSet`, `S`, and `F` are the definitions the meaning of every
-paper-facing theorem rests on; mis-stating them (dropping the `{1,…,N}` range,
-the empty-sum contribution `S(0)=1`, or the `ℚ`-valued exactness) could make a
-downstream result vacuous while still compiling.
-
-## Trust boundary
-
-`Assumptions.lean` is the single, explicit hole in the wall — the only file
-where an unproved fact may be assumed. It currently holds **exactly four
-axioms**:
-
-- `lowFiniteInput` — the computer-assisted low finite input `F(⌊e¹⁸⌋)` (a
-  ~10¹³-operation enumeration not feasibly reproducible in Lean; backed by
-  [`../ComputationalCertificates/`](../ComputationalCertificates/)).
-- `fioriKadiriSwidinsky_pi_approx` — the Fiori–Kadiri–Swidinsky explicit
-  prime-counting estimate (literature).
-- `dusart_theta_k3` — Dusart's explicit Chebyshev bound, `k = 3` row
-  (literature).
-- `bgmsSTable` — the published BGMS `S(0..83)` table (literature; the matching
-  data file lives in `../ComputationalCertificates/`).
-
-Everything downstream must be genuinely proved — no `sorry`, `admit`, `unsafe`,
-or hand-declared `axiom` anywhere else. In particular the directed-interval
-certificate evaluations (`Cert*.lean`) and the high finite input
-`F(⌊e⁶⁵⌋) > 3.2411` (`HighFiniteAssembly.lean`) are proved theorems, not axioms.
-
-Audit any theorem's real dependencies with `#print axioms <thm>`: it must list
-only the four axioms above, Lean's `propext`/`Classical.choice`/`Quot.sound`,
-and — solely via the `highFiniteInput` cluster (the nonconstancy side) — the
-accepted `native_decide` compiler-trust entries. The uniformity-side capstones
-carry none and remain kernel-only. Anything else is a leaked hole and a defect.
+  all proofs to `Lemmas/`.
+- **[`Assumptions.lean`](Assumptions.lean)** contains the numerical values
+  produced by the computational certificates, and results reused from the literature.
+  It is the only file
+  permitted to declare an `axiom`.
 
 ## Paper ↔ Lean map
 
 Each numbered item of the manuscript, what it establishes, and where it is
-realized in the code (cited by file + declaration name — names are stable, line
-numbers drift; all declarations are in `namespace Erdos320`). The manuscript
-shares one `Section.n` counter across theorems/propositions/lemmas/corollaries
-and its computer-assisted lemmas.
+realized in the code.
 
 | Paper # | Type (`label`) | What it establishes | Key Lean location(s) |
 |---|---|---|---|
@@ -113,7 +57,7 @@ and its computer-assisted lemmas.
 |---|---|---|
 | `eq:EN-SN-intro` | `𝓔_N`, `S(N)`, `F(N)` | `Defs/Basic.lean` `reciprocalSubsetSumSet`, `S`, `F` |
 | `eq:h-def-intro` | `h(N)`, `u_N`, `log_j` | `Defs/StoppingDepth.lean` `stoppingDepth`, `phaseCoordinate`, `iteratedLog` |
-| `eq:sigma-def` | `σ(p,m) = |B_{p,m}|` | `Defs/ModularImage.lean` `modularImage`, `sigma` |
+| `eq:sigma-def` | `σ(p,m) = \|B_{p,m}\|` | `Defs/ModularImage.lean` `modularImage`, `sigma` |
 | `eq:B-def` | `𝓑(X)`, `m_*`, `ρ`, `H̄_r`, `ρ_r` | `Defs/Averaging.lean` `BTerm`, `B`, `mStar`, `rho`, `Hbar`, `rhoDepth` |
 | `eq:main` / `-uniform-error` / `-uniformity` | main asymptotic / explicit uniform error / uniformity | `Lemmas/Main.lean` `main_asymptotic`, `main_uniform_error`, `main_uniformity`, `main_uniformity_tendsto` |
 

@@ -8,7 +8,7 @@ import Erdos320.Lemmas.CertificateTransfer
 On every low chord window `[0.96·x(f), 1.04·x(f)]`, `f ∈ [2.78, 2.80]`, the
 core profile `q̃` has positive slope, nonpositive second derivative, and
 logarithmic curvature `−ξ q̃''(ξ)/q̃'(ξ) < 1.0601`
-(`directed_interval_certificate.py`, transcript `< 1.06`).  The paper's
+(transcript `< 1.06`).  The paper's
 display block carries only the slope-positivity line and the curvature bound
 `eq:low-curvature`; the nonpositive-second-derivative conjunct proved here is
 extra strength with no displayed counterpart, needed for the

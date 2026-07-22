@@ -13,10 +13,9 @@ interval certificates of `sec:certificates`.
 
 Every object is a Laurent polynomial in `E₁, E₂, E₃, u` with common denominator
 `E₁²E₂²E₃`; the derivations `E₁' = E₁`, `E₂' = E₁E₂`, `E₃' = E₁E₂E₃` are the
-manuscript's eq. `laurent-derivative`.  The closed forms match the certificate
-program's `finite_reference_values` (`directed_interval_certificate.py`); they
-are proved here directly from Mathlib's `HasDerivAt` calculus (not via the
-`LaurentComb` symbolic layer), so the numerator polynomials appear literally.
+manuscript's eq. `laurent-derivative`.  The closed forms are proved here
+directly from Mathlib's `HasDerivAt` calculus (not via the `LaurentComb`
+symbolic layer), so the numerator polynomials appear literally.
 -/
 
 namespace Erdos320

@@ -43,7 +43,7 @@ mismatch. For where each *paper* item is realized in the code, see
 
 ## The objects in the statement
 
-The four load-bearing objects, with their exact Lean definitions (each pinned
+The four central objects, with their exact Lean definitions (each pinned
 below by a `rfl`-checked `example`, so this documentation cannot drift from the
 real definitions):
 
@@ -72,8 +72,7 @@ namespace Erdos320
 /-! ## Definition recap (machine-checked)
 
 Each `example` below re-displays a statement object as its fully-expanded
-definition and is closed by `rfl`; if any project definition ever changed, this
-file would fail to compile. This is what makes the recap above trustworthy
+definition and is closed by `rfl`. This is what makes the recap above trustworthy
 rather than mere prose. -/
 
 /-- `S N` is the cardinality of the set of reciprocal subset sums. -/
@@ -114,8 +113,7 @@ absorbed into `C`. See `erdos320_theorem_1_1_effective` for the named phase,
 display `eq:main-uniform-error` verbatim, and `erdos320_theorem_1_1_uniformity`
 for the little-`o` consequence `eq:main-uniformity`.
 
-Proved in `Erdos320/Lemmas/MainTheorem.lean` as `erdos320_main_exists`; the
-trust boundary is auditable with `#print axioms erdos320_theorem_1_1`. -/
+Proved in `Erdos320/Lemmas/MainTheorem.lean` as `erdos320_main_exists`. -/
 theorem erdos320_theorem_1_1 :
     ∃ Φ : ℝ → ℝ,
       ContinuousOn Φ (Set.Icc 1 (Real.exp 1))

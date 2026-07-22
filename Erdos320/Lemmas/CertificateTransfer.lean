@@ -1,4 +1,5 @@
 import Erdos320.Assumptions
+import Erdos320.Lemmas.BreakpointCoordinate
 import Erdos320.Lemmas.BackwardReferenceLimit
 import Erdos320.Lemmas.ExplicitHighAveraging
 import Erdos320.Lemmas.IteratedExpBounds
@@ -263,8 +264,9 @@ theorem cert_F_N0_bounds :
   ⟨by linarith [lowFiniteInput.1], by linarith [lowFiniteInput.2]⟩
 
 set_option maxHeartbeats 400000 in
-/-- The a-priori high `F`-enclosure `3.2411 < F(N₁) < 46` (paper:
-`F(N₁) ≤ (log N₁)·log 2 < 65·log 2 < 46`, from `S(N) ≤ 2^N`). -/
+/-- The high `F`-enclosure `3.2411 < F(N₁) < 46`: the lower bound is the proved
+high finite input `highFiniteInput` (`comp:high`), while the a-priori upper bound
+is `F(N₁) ≤ (log N₁)·log 2 < 65·log 2 < 46` (from `S(N) ≤ 2^N`). -/
 theorem cert_F_N1_bounds :
     (3.2411 : ℝ) < F 16948892444103337141417836114 ∧
       F 16948892444103337141417836114 < 46 := by

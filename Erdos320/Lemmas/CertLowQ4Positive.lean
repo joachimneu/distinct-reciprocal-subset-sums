@@ -6,7 +6,7 @@ import Erdos320.Lemmas.PhaseEnclosure
 
 The manuscript's directed-interval certificate asserts `Q̃₄(log₃ w) > 4.79`
 throughout the enlarged low window `w ∈ [9 725 449, 10 632 947]`
-(`directed_interval_certificate.py`, transcript `> 4.8` for the limit).  Here
+(transcript `> 4.8` for the limit).  Here
 that inequality is proved inside Lean: the closed form of
 `QrefCore4` (`CoreClosedForm.lean`) is combined with the explicit rational
 enclosures of `E₁,E₂,E₃` on the window (`PhaseEnclosure.lean`).  Over the

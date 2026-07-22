@@ -41,6 +41,7 @@ import Erdos320.Lemmas.Threshold
 import Erdos320.Lemmas.Phase
 import Erdos320.Lemmas.ExplicitHighAveraging
 import Erdos320.Lemmas.Main
+import Erdos320.Lemmas.BreakpointCoordinate
 import Erdos320.Lemmas.CertificateTransfer
 import Erdos320.Lemmas.CoreClosedForm
 import Erdos320.Lemmas.PhaseEnclosure

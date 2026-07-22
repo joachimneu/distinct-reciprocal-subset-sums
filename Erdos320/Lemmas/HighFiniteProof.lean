@@ -7,8 +7,7 @@ import Erdos320.Defs.LogCount
 
 This file reproduces, from already-proved Lean lemmas and the sanctioned
 BGMS/Dusart axioms, the `high_bridge_lower` computation of the manuscript's
-directed-interval certificate (`directed_interval_certificate.py`), whose
-conclusion is
+directed-interval certificate, whose conclusion is
 ```
 F(N₁) = (log N₁ / N₁)·log S(N₁) > 3.2411,   N₁ = ⌊e⁶⁵⌋
      = 16948892444103337141417836114.
@@ -166,10 +165,9 @@ whenever `P ≥ b` (Lean-checked below), exactly the certificate's use of
 
 The `b = 0` case (shells `m ≤ 60`) has no penalty and is separated out. -/
 
-/-- Nonemptiness / primality / shell-bracket facts for `shellPrimes N m`, from a
-positive lower bound on its cardinality and the arithmetic `m·(m+1) < N/(m+1)·(…)`
-… actually just from `p ∈ shellPrimes N m`.  Collected as one helper so each
-shell instantiation is a one-liner. -/
+/-- Primality of a shell prime: `p ∈ shellPrimes N m` gives `Nat.Prime p`.  One
+of three membership extractors (with `shellPrimes_shell_real` and
+`shellPrimes_gt_m`) that keep each shell instantiation a one-liner. -/
 theorem shellPrimes_prime {N m p : ℕ} (hp : p ∈ shellPrimes N m) : Nat.Prime p :=
   (mem_shellPrimes.mp hp).2.2
 

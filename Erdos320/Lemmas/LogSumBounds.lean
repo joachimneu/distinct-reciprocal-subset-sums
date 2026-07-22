@@ -127,17 +127,16 @@ theorem integral_log_div_sq {a b : ℝ} (ha : 0 < a) (hab : a ≤ b) :
 
 /-! ## The main partial-sum bound for `log(m+1)/(m+1)` -/
 
-/-- **Main partial-sum bound** (`RENEWAL_REMAINDER_AUDIT.md`'s formula
-`∑_{k=2}^{A+1} log k / k ≤ ½ log²(A+1) + 1`): the sum of `log(m+1)/(m+1)`
+/-- **Main partial-sum bound** (the manuscript's
+`∑_{k=2}^{A+1} log k / k ≤ ½ log²(A+1) + 1`, the `½ log²(T+1) + 1` term in the
+upper estimate of `lem:explicit-low-averaging`): the sum of `log(m+1)/(m+1)`
 over `1 ≤ m ≤ A` is at most `log²(A+1)/2 + 1`.  The terms `m = 1, 2`
 contribute `log 2/2 + log 3/3 < 1`; the rest is dominated by
 `∫_3^{A+1} log t / t dt ≤ log²(A+1)/2` by antitonicity of `log t / t` on
 `[e, ∞)`.
 
-(`RENEWAL_REMAINDER_AUDIT.md`'s constant `0.12` at the tail is loosened here to `1`
-because the Lean statement absorbs the first two terms into the additive
-constant; downstream uses only need an explicit `O(log²A)` with constant
-`1/2`.) -/
+(The first two terms are absorbed into the additive constant `1`; downstream
+uses only need an explicit `O(log²A)` with constant `1/2`.) -/
 theorem sum_log_succ_div_succ_le (A : ℕ) :
     ∑ m ∈ Finset.Icc 1 A, Real.log (m + 1) / (m + 1)
       ≤ Real.log (A + 1) ^ 2 / 2 + 1 := by
@@ -287,10 +286,7 @@ theorem sum_one_div_Ioc_le (A B : ℕ) (hA : 1 ≤ A) :
 /-! ## Combination form for the consumer -/
 
 /-- Combination form for the `min`-cap error of `lem:explicit-low-averaging`:
-`∑_{m=1}^{M} (log 2 · log(m+1))/(m+1) ≤ log 2 · (log²(M+1)/2 + 1)`.
-
-(The task sketch carried an unused parameter `X ≥ 1`; the statement does not
-depend on it, so it is omitted here.) -/
+`∑_{m=1}^{M} (log 2 · log(m+1))/(m+1) ≤ log 2 · (log²(M+1)/2 + 1)`. -/
 theorem sum_min_cap_error_le (M : ℕ) :
     ∑ m ∈ Finset.Icc 1 M, Real.log 2 * Real.log (m + 1) / (m + 1)
       ≤ Real.log 2 * (Real.log (M + 1) ^ 2 / 2 + 1) := by

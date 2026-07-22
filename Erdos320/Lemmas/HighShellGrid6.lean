@@ -3,7 +3,7 @@ import Erdos320.Lemmas.HighShellTight
 /-!
 # High-finite-input tight per-shell ledger, grid file 6/8
 
-Machine-generated (`gen_shells.py`) tight contribution lemmas `shell_tight_96`..`shell_tight_114`, cloning the proven three-shell template of `HighShellTight.lean` (`shell_contribution_ge_tight`).
+Machine-generated tight contribution lemmas `shell_tight_96`..`shell_tight_114`, each a clone of the proven per-shell template `shell_contribution_ge_tight` from `HighShellTight.lean`.
 Each shell's literals (`Pm`, `sL`, `ℓ`, `pen`) are Lean-verified by the `norm_num`/`native_decide` bullet discharges; nothing is assumed.
 -/
 

@@ -9,7 +9,7 @@ On every high chord
 window `[0.999·x(f), 1.001·x(f)]`, `f ∈ [3.24, 46]`, the core profile `q̃` has a
 strictly positive normalized slope `ξ·q̃'(ξ) > 0.0399`, nonpositive second
 derivative, and logarithmic curvature `−ξ q̃''(ξ)/q̃'(ξ) < 1.0201`
-(`directed_interval_certificate.py`, transcript `> 0.040`, `< 1.02`).  The
+(transcript `> 0.040`, `< 1.02`).  The
 paper's display `eq:high-data` carries only the normalized-slope and
 curvature bounds; the nonpositive-second-derivative conjunct proved here is
 extra strength with no displayed counterpart, needed for the

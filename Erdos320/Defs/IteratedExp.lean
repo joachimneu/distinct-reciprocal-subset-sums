@@ -7,7 +7,7 @@ import Mathlib.Algebra.BigOperators.Intervals
 # Iterated exponentials and the normalizing products of the exponential-scale iteration
 
 The manuscript's exponential-scale bookkeeping
-(§ `sec:exponential-iteration`; eq. `D-J`, `a-rho`, `L-def`):
+(§ `sec:exponential-iteration`; eq. `D-J`, `a-rho`):
 ```
 E₀(u) = u,   E_{j+1}(u) = exp (E_j(u)),
 D_r(u) = ∏_{j=0}^{r-3} E_j(u)  (r ≥ 3),  D₂ = 1,

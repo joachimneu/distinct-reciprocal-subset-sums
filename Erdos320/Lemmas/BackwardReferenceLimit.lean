@@ -260,7 +260,8 @@ theorem four_mul_exp_neg_E_half_le_inv {j : ℕ} (hj : 3 ≤ j) {u : ℝ}
 /-! ## The derivative bound for `B_j` (eq. `Bj-derivative-bound`)
 
 `Erdos320.Lemmas.BackwardReference` proved the value bounds
-`0 ≤ B_j ≤ 2A_{j-1}/x_{j-2}`; here we add the derivative bound
+`0 ≤ B_j ≤ A_{j-1}` (`Bref_nonneg`, `Bref_le_A_pred`); here we add the
+derivative bound
 `|B_j'| ≤ 4 A_{j-1} x_{j-3}'/x_{j-2}` (with `x_{j-3}' = a_{j-1}`), via the
 formal Laurent representation of `B_j`. -/
 

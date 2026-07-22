@@ -315,8 +315,7 @@ theorem Q_real_lower {X : ℝ} (hX : (10 : ℝ) ^ 7 ≤ X) :
   nlinarith [h5, hpoly, hX3, hX6]
 
 /-- **Real upper bound on `Q`**: `Q ≤ e^X/X³` for `X ≥ 10⁷` — with constant
-`1` (sharper than the task-sheet's provisional `2`), from `N ≤ e^X` and
-`M + 1 > X³`. -/
+`1`, from `N ≤ e^X` and `M + 1 > X³`. -/
 theorem Q_real_upper {X : ℝ} (hX : (10 : ℝ) ^ 7 ≤ X) :
     ((⌊Real.exp X⌋₊ / (shellCutoff X + 1) : ℕ) : ℝ) ≤ Real.exp X / X ^ 3 := by
   have hX0 : (0 : ℝ) < X := lt_of_lt_of_le (by norm_num) hX

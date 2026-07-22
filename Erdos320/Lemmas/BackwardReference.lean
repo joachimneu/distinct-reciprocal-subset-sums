@@ -10,7 +10,7 @@ import Mathlib.Analysis.Calculus.Deriv.Inv
 The manuscript's backward differentiation operator `𝓛_r f = f' / a_r`
 (eq. `L-def`) and the finite backward reference functions
 `Q_s^{[R]} = 𝓛_s 𝓛_{s+1} ⋯ 𝓛_{R-1} J_R` (eq. `finite-reference`), together
-with the finite-depth *exact* identities of §6:
+with the finite-depth *exact* identities of §5–6:
 
 * the logarithmic-differentiation identities `𝓛_r D_{r+1} = A_r`
   (eq. `D-identity`), here in `HasDerivAt` form (`hasDerivAt_D_succ`,

@@ -2395,7 +2395,7 @@ theorem explicit_high_averaging_small {X : ℝ} (hX : (8e26:ℝ) ≤ X) :
 
 /-! ## The high-interval bound for `ρ` (`cor:explicit-high-rho`)
 
-The paper's proof (TeX: proof of `cor:explicit-high-rho`) applies
+The manuscript's proof of `cor:explicit-high-rho` applies
 eq. `threshold-displacement` at `x = E_{s−1}(u)`.  Here the displacement
 identity is derived inline in `high_rho_abs_lt` (write `a = e^x`,
 `n_* = m_*(a)`, `z = log n_*`, `δ = g(n_*) − a ∈ (0, log 2]`; then

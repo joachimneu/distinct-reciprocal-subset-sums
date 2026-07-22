@@ -5,8 +5,8 @@ import Erdos320.Lemmas.HighShellTight
 
 This file proves the aggregate block contribution to
 `highFiniteInput : 3.2411 < F ⌊e⁶⁵⌋`, treating the shells `m ∈ [155, 10⁶]` as a
-single prime block (the certificate's `high_bridge_lower` aggregate step in
-`directed_interval_certificate.py`).  The block uses the collision multiplicity
+single prime block (the certificate's `high_bridge_lower` aggregate step).  The
+block uses the collision multiplicity
 `b = 2` with the value-at-`m=154` numerator span `lcm(1..154)·H₁₅₄` (valid for
 all `m ≥ 154` because `{1,…,154} ⊆ {1,…,m}`, so `sigma p m ≥ sigma p 154`
 uniformly — `sigma_mono_in_m`), and the floor `S(154) ≥ sLowerBGMS 154`.

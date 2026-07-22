@@ -8,7 +8,7 @@ The manuscript's directed-interval certificate asserts the slope-margin bound
 `x(f)·q̃'(x(f)) = Q̃₃(u(f)) / log x(f) > 0.1389` throughout the wide low input
 range `f ∈ [2.78, 2.80]`, where `x(f) = 65 659 969·f / log 65 659 969` is the
 low breakpoint coordinate and `u(f) = log₃ x(f)`
-(`directed_interval_certificate.py`, transcript `> 0.1390`).  Here the
+(transcript `> 0.1390`).  Here the
 equivalent core-level form
 `0.1389 · log x(f) < Q̃₃(log₃ x(f))`
 is proved inside Lean, by the same technique as `CertLowQ4Positive.lean`: the closed form
@@ -25,8 +25,9 @@ margin.  We take the **grouped-form** route: `Q̃₃` is rewritten as
 leading part is bounded termwise via reciprocal enclosures.
 
 The theorem `lowSlopeMarginCert` certifies the core-level slope margin behind
-the paper's display `eq:low-slope-margin`, on exactly the paper's input range
-`f ∈ [2.78, 2.80]`.
+the paper's display `eq:low-slope-margin` (whose stated constant is the weakened
+`> 0.13889`, implied by the `0.1389` proved here), on exactly the paper's input
+range `f ∈ [2.78, 2.80]`.
 -/
 
 namespace Erdos320

@@ -328,8 +328,8 @@ theorem S_two_mul_of_modCheck {n p a k : ℕ} (hp : p.Prime) (hk : 1 ≤ k) (hkp
 
 /-! ## Part 3 — the 35 witnesses, the ledger, and the lower bounds -/
 
-/-- The `35` certified doubling indices (in increasing order), from
-`doubling_witness` in `directed_interval_certificate.py`. -/
+/-- The `35` certified doubling indices (in increasing order), from the
+certificate's `doubling_witness` data. -/
 def doublingIndices : List ℕ :=
   [86, 87, 89, 92, 93, 94, 97, 98, 101, 103, 106, 107, 109, 111, 113, 116, 118,
    121, 122, 123, 124, 125, 127, 128, 129, 131, 134, 137, 139, 141, 142, 146,

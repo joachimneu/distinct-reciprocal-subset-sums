@@ -138,7 +138,7 @@ theorem sum_largePrimes_eq_shell_sum (N M : ℕ) (f : ℕ → ℕ → ℝ) :
 
 /-! ## Harmonic-sum bounds (for the fibre error term) -/
 
-/-- `H_N` is Mathlib's `harmonic N`; `harmonicSum` is now definitionally
+/-- `H_N` is Mathlib's `harmonic N`; `harmonicSum` is definitionally
 `harmonic`, so this is `rfl`. -/
 theorem harmonicSum_eq_harmonic (N : ℕ) : harmonicSum N = harmonic N := rfl
 

@@ -180,7 +180,7 @@ theorem shell_contribution_ge (m b : ℕ) (Pm : ℚ) (ℓ pen : ℝ) (sL : ℕ)
 /-! ## Three representative shells (one per collision regime)
 
 The concrete inputs reproduce the certificate's `high_bridge_lower` per-shell
-data (`directed_interval_certificate.py`), except that the log endpoints use the
+data, except that the log endpoints use the
 coarser `64.999/65.001 ± logNat` enclosures rather than full-precision `log`, and
 the `b = 2` penalty is bounded through `log 10` rather than the tight
 `log(1 + t)`.  Both loosenings are modest and each shell's contribution stays
