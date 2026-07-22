@@ -1,13 +1,19 @@
 # Exact fixed-point certificate for the low finite input
 
 `pilot_mod_images.cpp` certifies the low finite input of the manuscript
-(Computational Lemma `comp:low`): the two-sided enclosure
+(Computational Lemma `comp:low`, eq. `low-F`), which is also the Lean axiom
+`lowFiniteInput` in `../Erdos320/Assumptions.lean`: the two-sided enclosure
 
 ```text
-2.78 < F(65659969) < 2.80,    F(N) = (log(N)/N) log(S(N)),
+2.78724720 < F(65659969) < 2.79179560,    F(N) = (log(N)/N) log(S(N)),
 ```
 
-at `N = 65659969 = floor(e^18)`. The mathematics is the manuscript's: the
+at `N = 65659969 = floor(e^18)`. The run's certified output is the outward-
+rounded `CERT F_interval` line, `2.7872472015 < F < 2.7917955118`, of which
+the assumed interval is a strict weakening; the concluding `CERT PASS` line
+additionally places `F` in the roomier window `2.78 < F < 2.80` over which the
+companion Lean low-certificate lemmas (`../Erdos320/Lemmas/CertLow*.lean`) are
+uniform in `f`. The mathematics is the manuscript's: the
 large-prime projection bracket that reduces `S(N)` to a product of exact
 modular image sizes, and the substitution that turns the certified enclosures
 below into the bounds on `F(N)`, are given in the proof of `comp:low` and in
@@ -31,11 +37,14 @@ timeout --signal=TERM --kill-after=10s 900s \
 ```
 
 proves, without using a floating-point logarithm in any certified
-comparison,
+comparison, the enclosure
 
 ```text
-2.78 < F(65659969) < 2.80.
+2.7872472015 < F(65659969) < 2.7917955118
 ```
+
+printed as the `CERT F_interval` line, which implies the assumed interval
+above.
 
 The timeout limits are operational guards only; they do not enter a certified
 inequality. The full 3,876,158-prime run takes a few minutes.
@@ -105,22 +114,28 @@ error from the 3,876,158 prime contributions and is far smaller than the
 final slack.
 
 The same routine certifies `log N < 18`, whence `H_N <= 1 + log N < 19` and
-the fiber factor obeys `H_N D_Q + 1 < 20 D_Q`. The claimed bounds then reduce
-to the two exact rational comparisons
+the fiber factor obeys `H_N D_Q + 1 < 20 D_Q`. With `G_lo` the lower product
+logarithm and `G_hi` the sum of the upper product logarithm, the upper
+`log D_Q`, and the upper `log 20`, the exact rationals
+`log_lo(N)·G_lo / (10^24·N)` and `log_hi(N)·G_hi / (10^24·N)` bound `F(N)`
+from below and above. The `CERT F_interval` line prints them by exact integer
+long division, rounded outward:
+
+```text
+2.7872472015 < F(N) < 2.7917955118.
+```
+
+This is the certified enclosure that implies the interval assumed by the
+manuscript and by Lean. The final `CERT PASS` verdict additionally checks the
+two exact rational comparisons
 
 ```text
 100 log_lo(N) G_lo > 278 N (10^12)^2,
 100 log_hi(N) G_hi < 280 N (10^12)^2,
 ```
 
-where `G_lo` is the lower product logarithm and `G_hi` is the sum of the upper
-product logarithm, the upper `log D_Q`, and the upper `log 20`. These are
-exactly `F(N) > 2.78` and `F(N) < 2.80`; the program also reports the stronger
-outward-rounded interval
-
-```text
-2.7872472015 < F(N) < 2.7917955118.
-```
+i.e. `2.78 < F(N) < 2.80` — membership in the window over which the companion
+Lean low-certificate lemmas are uniform.
 
 ## Implementation notes
 

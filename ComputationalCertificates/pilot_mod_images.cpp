@@ -17,8 +17,13 @@
 //
 //   N = 65,659,969 = floor(exp(18)),  1 <= m <= 8000,
 //
-// and combines them with the small-prime denominator bound.  The final
-// certified conclusion is 2.78 < F(N) < 2.80.
+// and combines them with the small-prime denominator bound.  The certified
+// conclusion is the outward-rounded enclosure printed as CERT F_interval,
+// 2.7872472015 < F(N) < 2.7917955118, whose strict weakening
+// 2.78724720 < F(N) < 2.79179560 is the interval assumed by the manuscript
+// (comp:low) and by the Lean axiom lowFiniteInput.  The closing PASS line
+// additionally confirms 2.78 < F(N) < 2.80, membership in the roomier window
+// over which the companion Lean low-certificate lemmas are uniform.
 //
 // How to read this file
 // ---------------------
