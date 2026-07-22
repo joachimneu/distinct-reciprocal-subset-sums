@@ -1,4 +1,5 @@
 import Erdos320.Lemmas.MainTheorem
+import Erdos320.Lemmas.AxiomAudit
 
 /-!
 # Theorem 1.1 — the trusted core (read this file first)
@@ -183,5 +184,34 @@ theorem erdos320_theorem_1_1_uniformity :
             - 1 - 1 / iteratedLog 3 (N : ℝ)|)
       Filter.atTop (nhds 0) :=
   main_uniformity_tendsto
+
+/-! ## Axiom audit — the exact trust boundary of each theorem
+
+Each `#assert_axioms` line below states the *complete* axiom set of one
+theorem above, and elaboration fails if that set ever changes (the command is
+defined in `Erdos320/Lemmas/AxiomAudit.lean`; `#print axioms <thm>` displays
+the same information interactively). Beyond Lean's foundational three
+(`propext`, `Classical.choice`, `Quot.sound`), only axioms of
+`Erdos320/Assumptions.lean` appear. The two theorems containing the
+nonconstancy claim additionally carry the accepted `native_decide`
+compiler-trust entries of the `highFiniteInput` cluster (the `+ native_decide`
+suffix); the two uniformity-side theorems use no compiled evaluation and rest
+on `fioriKadiriSwidinsky_pi_approx` alone. -/
+
+#assert_axioms erdos320_theorem_1_1 :
+  [propext, Classical.choice, Quot.sound,
+   lowFiniteInput, fioriKadiriSwidinsky_pi_approx, dusart_theta_k3, bgmsSTable]
+  + native_decide
+
+#assert_axioms erdos320_theorem_1_1_effective :
+  [propext, Classical.choice, Quot.sound,
+   lowFiniteInput, fioriKadiriSwidinsky_pi_approx, dusart_theta_k3, bgmsSTable]
+  + native_decide
+
+#assert_axioms erdos320_theorem_1_1_uniform_error :
+  [propext, Classical.choice, Quot.sound, fioriKadiriSwidinsky_pi_approx]
+
+#assert_axioms erdos320_theorem_1_1_uniformity :
+  [propext, Classical.choice, Quot.sound, fioriKadiriSwidinsky_pi_approx]
 
 end Erdos320
